@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,7 @@ public class PlayerControls : MonoBehaviour
     }
 
         
+    [UsedImplicitly]
     public void AcceptDirection(InputAction.CallbackContext context)
     {
         if (context.phase != InputActionPhase.Performed) return;
