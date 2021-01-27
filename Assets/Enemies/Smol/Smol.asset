@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f557e2f5bc6bb58fb9decd31b07f808d, type: 3}
+  m_Name: Smol
+  m_EditorClassIdentifier: 
+  asset: {fileID: 289505880547381615, guid: cb3a186f16b595e06a7f5c6494b57e3b, type: 3}
