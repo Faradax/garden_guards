@@ -1,3 +1,4 @@
+using System;
 using PathCreation;
 using UnityEngine;
 
@@ -11,10 +12,10 @@ public class MoveAlongPath : MonoBehaviour
     private Vector3 _desiredDirection;
     private Rigidbody _rigidbody;
 
-    void Start()
+    private void OnEnable()
     {
-        this._path = pathCreator.path;
         _rigidbody = GetComponent<Rigidbody>();
+        _path = pathCreator.path;
     }
 
     void Update()
@@ -26,6 +27,7 @@ public class MoveAlongPath : MonoBehaviour
 
         Vector3 difference = (whereTo - currentPosition);
         _desiredDirection = new Vector3(difference.x, 0, difference.z).normalized;
+        
     }
 
     private void FixedUpdate()
