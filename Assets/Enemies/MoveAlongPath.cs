@@ -23,7 +23,8 @@ public class MoveAlongPath : MonoBehaviour
         Vector3 currentPosition = transform.position;
         float distanceAlongPath = _path.GetClosestDistanceAlongPath(currentPosition);
         // We can only see a short distance ahead, yet we can see plenty there that needs to be done.
-        Vector3 whereTo = _path.GetPointAtDistance(distanceAlongPath + .2f);
+        const float shortDistance = .2f;
+        Vector3 whereTo = _path.GetPointAtDistance(distanceAlongPath + shortDistance);
 
         Vector3 difference = (whereTo - currentPosition);
         _desiredDirection = new Vector3(difference.x, 0, difference.z).normalized;
