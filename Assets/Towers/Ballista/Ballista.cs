@@ -6,11 +6,28 @@ public class Ballista : MonoBehaviour
     public Transform platform;
     public Transform muzzle;
 
+    public GameObject projectile;
+    
     public float xAngle;
 
+    private float cooldown = 1.7f;
+    private Vector3 _rememberedVelocity;
+    
     public void Update()
     {
         SearchForEnemy();
+        cooldown = Mathf.Max(cooldown - Time.deltaTime, 0);
+
+        if (cooldown == 0)
+        {
+            Fire();
+            cooldown = 1.7f;
+        }
+    }
+    private void Fire()
+    {
+        GameObject instantiate = Instantiate(projectile, transform.position, Quaternion.identity);
+        instantiate.GetComponent<Rigidbody>().velocity = _rememberedVelocity;
     }
 
     private void SearchForEnemy()
@@ -42,7 +59,7 @@ public class Ballista : MonoBehaviour
 
         var vHorizontal = u_right;
         var vVertical = Vector3.up * u_up;
-        Debug.Log(vHorizontal + vVertical);
+        _rememberedVelocity = vHorizontal + vVertical;
         muzzle.transform.LookAt(muzzle.position + (vHorizontal + vVertical), Vector3.up);
     }
 }
