@@ -7,9 +7,7 @@ public class Ballista : MonoBehaviour
     public Transform muzzle;
 
     public GameObject projectile;
-    
-    public float xAngle;
-
+        
     private float cooldown = 1.7f;
     private Vector3 _rememberedVelocity;
     
@@ -48,7 +46,7 @@ public class Ballista : MonoBehaviour
         {
             return;
         }
-        Vector3 toTarget = target.position - transform.position;
+        Vector3 toTarget = (target.position + target.GetComponent<Rigidbody>().velocity) - transform.position;
         float offsetVertical = toTarget.y;
         Vector3 offsetHorizontal = toTarget;
         offsetHorizontal.y = 0;
