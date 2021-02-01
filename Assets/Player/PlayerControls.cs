@@ -1,5 +1,6 @@
 using System.Collections;
 using JetBrains.Annotations;
+using Player.Interaction;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,20 @@ public class PlayerControls : MonoBehaviour
         if (context.phase != InputActionPhase.Performed) return;
         var input = context.ReadValue<Vector2>();
         _desiredVelocity = new Vector3(input.x, 0, input.y) * maxSpeed;
+    }
+    
+    [UsedImplicitly]
+    public void AcceptInteract(InputAction.CallbackContext context)
+    {
+        if (context.phase != InputActionPhase.Performed) return;
+        GetComponent<InteractionController>()?.Interact();
+    }
+    
+    [UsedImplicitly]
+    public void AcceptCancel(InputAction.CallbackContext context)
+    {
+        if (context.phase != InputActionPhase.Performed) return;
+        GetComponent<InteractionController>()?.Cancel();
     }
     
     void FixedUpdate()
