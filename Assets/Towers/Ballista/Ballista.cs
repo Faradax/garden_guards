@@ -10,13 +10,14 @@ public class Ballista : MonoBehaviour
         
     private float cooldown = 1.7f;
     private Vector3 _rememberedVelocity;
-    
+    private Transform _target;
+
     public void Update()
     {
         SearchForEnemy();
         cooldown = Mathf.Max(cooldown - Time.deltaTime, 0);
 
-        if (cooldown == 0)
+        if (cooldown == 0 && _target)
         {
             Fire();
             cooldown = 1.7f;
@@ -32,21 +33,21 @@ public class Ballista : MonoBehaviour
     {
         Collider[] overlapSphere = Physics.OverlapSphere(transform.position, 5f);
 
-        Transform target = null;
+        _target = null;
         foreach (Collider collider1 in overlapSphere)
         {
             bool isEnemy = collider1.CompareTag("Enemy");
             if (isEnemy)
             {
-                target = collider1.transform;
+                _target = collider1.transform;
                 break;
             }
         }
-        if (target == null)
+        if (_target == null)
         {
             return;
         }
-        Vector3 toTarget = (target.position + target.GetComponent<Rigidbody>().velocity) - transform.position;
+        Vector3 toTarget = (_target.position + _target.GetComponent<Rigidbody>().velocity) - transform.position;
         float offsetVertical = toTarget.y;
         Vector3 offsetHorizontal = toTarget;
         offsetHorizontal.y = 0;
