@@ -34,7 +34,7 @@ public class InteractableChecker : MonoBehaviour
     private Interactable FindInteractable()
     {
         Collider[] results = Physics.OverlapSphere(transform.position, radius);
-        return results.Select(it => it.GetComponent<Interactable>()).FirstOrDefault();
+        return results.Select(it => it.GetComponent<Interactable>()).FirstOrDefault(it => it);
     }
 }
 }

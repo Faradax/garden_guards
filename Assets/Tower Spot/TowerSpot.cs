@@ -15,6 +15,7 @@ public class TowerSpot : Interactable
     {
         seed.position = transform.position;
         seed.GetComponent<TowerCapsule>().Use();
+        gameObject.SetActive(false);
     }
 }
 }

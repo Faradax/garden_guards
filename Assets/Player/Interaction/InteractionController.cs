@@ -9,6 +9,10 @@ public class InteractionController : MonoBehaviour
 
     public InteractableChecker interactableChecker;
 
+    public AudioSource audioSource;
+    public AudioClip pickUpClip;
+    public AudioClip setDownClip;
+
     /**
      * General-Purpose entrypoint for interaction with whatever is there
      */
@@ -40,8 +44,12 @@ public class InteractionController : MonoBehaviour
         if (_carryableTransform) return;
 
         _carryableTransform = itemToPickUp.transform;
-        _carryableTransform.parent = transform;
-        _carryableTransform.localPosition = transform.forward;
+        Transform ownTransform = transform;
+        _carryableTransform.parent = ownTransform;
+        _carryableTransform.localPosition = ownTransform.forward;
+
+        audioSource.clip = pickUpClip;
+        audioSource.Play();
     }
 
     private void Drop()
@@ -49,16 +57,20 @@ public class InteractionController : MonoBehaviour
 
         _carryableTransform.parent = null;
         _carryableTransform = null;
+        audioSource.clip = setDownClip;
+        audioSource.Play();
     }
 
     /**
-     * Specific method that Tower Spots can call to have the player plant their seed.
+     * Specific method that Tower Spots can call to have the player plant a carried seed.
      */
     public void Interact(TowerSpot towerSpot)
     {
         if (_carryableTransform)
         {
             towerSpot.AcceptSeed(_carryableTransform);
+            audioSource.clip = setDownClip;
+            audioSource.Play();
         }
     }
 }
