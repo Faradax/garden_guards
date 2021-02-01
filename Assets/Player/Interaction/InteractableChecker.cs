@@ -15,6 +15,7 @@ public class InteractableChecker : MonoBehaviour
     }
     
     private Interactable _foundInteractable;
+    private Func<Interactable, bool> _filter;
 
     public void Update()
     {
@@ -34,7 +35,16 @@ public class InteractableChecker : MonoBehaviour
     private Interactable FindInteractable()
     {
         Collider[] results = Physics.OverlapSphere(transform.position, radius);
-        return results.Select(it => it.GetComponent<Interactable>()).FirstOrDefault(it => it);
+        return results
+            .Select(it => it.GetComponent<Interactable>())
+            .Where(it => it)
+            .Where(_filter)
+            .OrderBy(it => Vector3.SqrMagnitude(it.transform.position - transform.position))
+            .FirstOrDefault();
+    }
+    public void SetFilterMethod(Func<Interactable, bool> filter)
+    {
+        _filter = filter;
     }
 }
 }

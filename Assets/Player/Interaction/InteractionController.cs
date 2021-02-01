@@ -1,3 +1,4 @@
+using System;
 using Tower_Spot;
 using UnityEngine;
 
@@ -13,6 +14,17 @@ public class InteractionController : MonoBehaviour
     public AudioClip pickUpClip;
     public AudioClip setDownClip;
 
+    private void OnEnable()
+    {
+        interactableChecker.SetFilterMethod(isInteresting);
+    }
+
+    private bool isInteresting(Interactable interactable)
+    {
+        if (interactable.transform == _carryableTransform) return false;
+        return true;
+    }
+    
     /**
      * General-Purpose entrypoint for interaction with whatever is there
      */
