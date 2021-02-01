@@ -273,8 +273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableChecker: {fileID: 1056629826480445062}
   audioSource: {fileID: -55397431207986184}
-  pickUpClip: {fileID: 8300000, guid: ebbbcd93205576df2858f23957cbc2f3, type: 3}
-  setDownClip: {fileID: 8300000, guid: 561f1f3ec5769f42493f31bc71136819, type: 3}
+  pickUpClip: {fileID: 8300000, guid: 528a74f03bcb834f3893b8e0f970f605, type: 3}
+  setDownClip: {fileID: 8300000, guid: f3a77eef08999ea3392b138395c7a02a, type: 3}
 --- !u!114 &1056629826480445062
 MonoBehaviour:
   m_ObjectHideFlags: 0
