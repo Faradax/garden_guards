@@ -47,19 +47,23 @@ public class PlayerControls : MonoBehaviour
     void FixedUpdate()
     {
 
-        var velocity = _rigidbody.velocity;
-        var maxDelta = maxAcceleration * Time.deltaTime;
+        Vector3 velocity = _rigidbody.velocity;
+        float maxDelta = maxAcceleration * Time.deltaTime;
 
         // adapt desired velocity to ground inclination
-        var xAxis = Vector3.ProjectOnPlane(Vector3.right, _groundNormal);
-        var zAxis = Vector3.ProjectOnPlane(Vector3.forward, _groundNormal);
+        Vector3 xAxis = Vector3.ProjectOnPlane(Vector3.right, _groundNormal);
+        Vector3 zAxis = Vector3.ProjectOnPlane(Vector3.forward, _groundNormal);
         float currentX = Vector3.Dot(velocity, xAxis);
         float currentZ = Vector3.Dot(velocity, zAxis);
 
-        var newX = Mathf.MoveTowards(currentX, _desiredVelocity.x, maxDelta);
-        var newZ = Mathf.MoveTowards(currentZ, _desiredVelocity.z, maxDelta);
+        float newX = Mathf.MoveTowards(currentX, _desiredVelocity.x, maxDelta);
+        float newZ = Mathf.MoveTowards(currentZ, _desiredVelocity.z, maxDelta);
 
         _rigidbody.velocity += xAxis * (newX - currentX) + zAxis * (newZ - currentZ);
+        
+        // Rotation
+
+        transform.forward = Vector3.RotateTowards(transform.forward, _desiredVelocity.normalized, Mathf.Deg2Rad * 25, 0);
     }
 
     private void OnCollisionEnter(Collision other)

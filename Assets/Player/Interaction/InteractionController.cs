@@ -58,7 +58,7 @@ public class InteractionController : MonoBehaviour
         _carryableTransform = itemToPickUp.transform;
         Transform ownTransform = transform;
         _carryableTransform.parent = ownTransform;
-        _carryableTransform.localPosition = ownTransform.forward;
+        _carryableTransform.localPosition = Vector3.forward + Vector3.up;
 
         audioSource.clip = pickUpClip;
         audioSource.Play();
