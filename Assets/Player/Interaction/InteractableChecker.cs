@@ -7,7 +7,6 @@ namespace Player.Interaction
 public class InteractableChecker : MonoBehaviour
 {
     public int radius = 4;
-    public GameObject pointerBillboard;
 
     public Interactable CurrentInteractable
     {
