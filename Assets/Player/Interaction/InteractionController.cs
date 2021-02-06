@@ -22,7 +22,8 @@ public class InteractionController : MonoBehaviour
     private bool isInteresting(Interactable interactable)
     {
         if (interactable.transform == _carryableTransform) return false;
-        return true;
+        if (_carryableTransform && interactable.GetComponent<TowerSpot>()) return true;
+        return !_carryableTransform;
     }
     
     /**
