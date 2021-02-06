@@ -8,30 +8,40 @@ public class InteractableChecker : MonoBehaviour
 {
     public int radius = 4;
     public GameObject pointerBillboard;
-    
+
     public Interactable CurrentInteractable
     {
         get => _foundInteractable;
     }
-    
+
     private Interactable _foundInteractable;
     private Func<Interactable, bool> _filter;
 
     public void Update()
     {
-        _foundInteractable = FindInteractable();
 
+
+        Interactable oldFoundInteractable = _foundInteractable;
+        Interactable newFoundInteractable = FindInteractable();
+
+        if (newFoundInteractable == oldFoundInteractable)
+        {
+            return;
+        }
+
+        _foundInteractable = newFoundInteractable;
+        
         if (_foundInteractable)
         {
-            pointerBillboard.transform.position = _foundInteractable.transform.position + Vector3.up;
-            pointerBillboard.SetActive(true);
+            _foundInteractable.gameObject.AddComponent<Outline>();
         }
-        else
+        
+        if (oldFoundInteractable)
         {
-            pointerBillboard.SetActive(false);
+            Destroy(oldFoundInteractable.gameObject.GetComponent<Outline>());
         }
     }
-    
+
     private Interactable FindInteractable()
     {
         Collider[] results = Physics.OverlapSphere(transform.position, radius);
