@@ -28,6 +28,9 @@ public class PlayerControls : MonoBehaviour
         if (context.phase != InputActionPhase.Performed) return;
         var input = context.ReadValue<Vector2>();
         _desiredVelocity = new Vector3(input.x, 0, input.y) * maxSpeed;
+
+        var animator = GetComponent<Animator>();
+        animator.SetFloat("Blend", _desiredVelocity.magnitude);
     }
     
     [UsedImplicitly]
