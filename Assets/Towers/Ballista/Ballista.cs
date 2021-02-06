@@ -25,7 +25,7 @@ public class Ballista : MonoBehaviour
     }
     private void Fire()
     {
-        GameObject instantiate = Instantiate(projectile, transform.position, Quaternion.identity);
+        GameObject instantiate = Instantiate(projectile, transform.position + Vector3.up * 0.5f, Quaternion.identity);
         instantiate.GetComponent<Rigidbody>().velocity = _rememberedVelocity;
     }
 
