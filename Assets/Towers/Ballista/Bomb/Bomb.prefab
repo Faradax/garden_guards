@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1736074046016221094}
   - component: {fileID: 3458511560459114001}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4671a4f25c9bbd50fb0a8a6610e45d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1869440762954119595, guid: fbdceb6881a5b170ab55c89ddc56d6de, type: 3}
 --- !u!54 &3458511560459114001
 Rigidbody:
   m_ObjectHideFlags: 0

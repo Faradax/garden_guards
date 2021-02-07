@@ -1,13 +1,17 @@
+using Unity.Mathematics;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
+
+    public GameObject explosion;
+    
     private void OnTriggerEnter(Collider other)
     {
         bool isEnemy = other.CompareTag("Enemy");
         if (isEnemy)
         {
-            Debug.Log("Hit");
+            Instantiate(explosion, transform.position, quaternion.identity);
         }
         Destroy(gameObject);
     }
