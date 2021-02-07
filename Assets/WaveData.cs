@@ -19,6 +19,7 @@ public class WaveData : ScriptableObject
 [Serializable]
 public class Spawn
 {
+    public LaneSO lane;
     public float StartTime { get; } = 15;
     public float EndTime { get; } = 65;
     public int Amount { get; } = 9;

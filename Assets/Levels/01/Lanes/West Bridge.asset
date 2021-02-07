@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e1b1b989b44bc8800513768ac192ce, type: 3}
-  m_Name: WaveData
+  m_Script: {fileID: 11500000, guid: f8d123516aac5cdd1be56c4c79b63a61, type: 3}
+  m_Name: West Bridge
   m_EditorClassIdentifier: 
-  lanes:
-  - {fileID: 11400000, guid: 2a06eb3ebe6420406b9036ceb1ef2fbd, type: 2}
-  - {fileID: 11400000, guid: 6b6b1bfdd31d7239b966092e612913c3, type: 2}
-  spawns: []

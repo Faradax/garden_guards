@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DefaultNamespace;
 using UnityEditor;
 using UnityEngine;
@@ -28,7 +29,7 @@ public class WaveDataEditorWindow : EditorWindow
             {
                 background = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Editor/Background_Spawn.png")
             },
-            border = new RectOffset(10, 10, 10, 10),
+            border = new RectOffset(15, 15, 10, 10),
             overflow = new RectOffset(0, 0, -5, -5),
             padding = new RectOffset(5, 5, 5, 5),
             alignment = TextAnchor.MiddleCenter
@@ -76,7 +77,7 @@ public class WaveDataEditorWindow : EditorWindow
         EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
         settings.Snapping = GUILayout.Toggle(settings.Snapping, EditorGUIUtility.TrIconContent("GridAxisX", "Snap to X"),
             EditorStyles.toolbarButton);
-        settings.PixelPerSecond = EditorGUILayout.Slider("a", settings.PixelPerSecond, 0.2f, 30f);
+        settings.PixelPerSecond = EditorGUILayout.Slider( settings.PixelPerSecond, 0.2f, 30f);
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
     }
@@ -102,9 +103,9 @@ public class WaveDataEditorWindow : EditorWindow
     private void DrawLaneBodies()
     {
         _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
-        EditorGUILayout.BeginVertical(new GUIStyle(), GUILayout.Width(1200));
+        EditorGUILayout.BeginVertical(new GUIStyle(), GUILayout.Width(300 * settings.PixelPerSecond));
         Rect rulerRect = EditorGUILayout.GetControlRect(false, Styles.ruler.fixedHeight, Styles.ruler, GUILayout.ExpandWidth(true));
-        DrawRuler(rulerRect);
+        DrawRuler(rulerRect, settings);
         EditorGUILayout.Space();
         foreach (LaneSO waveDataLane in waveData.lanes)
         {
@@ -116,40 +117,30 @@ public class WaveDataEditorWindow : EditorWindow
     }
     private void DrawLaneBody(LaneSO lane, Rect controlRect)
     {
-        DrawRuler(controlRect);
-        DrawLaneContent(controlRect);
+        DrawRuler(controlRect, settings);
+        DrawLaneContent(controlRect, lane);
     }
-    private static void DrawRuler(Rect controlRect)
+    private static void DrawRuler(Rect controlRect, WaveViewSettings waveViewSettings)
     {
-        int pixelsPerSecond = 15;
+        float pixelsPerSecond = waveViewSettings.PixelPerSecond;
         Handles.color = new Color(.35f, .35f, .35f);
         float mark = 0;
         EditorGUI.DrawRect(controlRect, new Color(.20f, .20f, .20f));
         while (mark < controlRect.width)
         {
-            var start = new Vector3(controlRect.x + mark, controlRect.y, 0);
-            var end = new Vector3(controlRect.x + mark, controlRect.y + controlRect.height, 0);
+            var start = new Vector3(controlRect.x + mark, controlRect.y + 5, 0);
+            var end = new Vector3(controlRect.x + mark, controlRect.y + controlRect.height - 5, 0);
             Handles.DrawLine(start, end);
             mark += 5 * pixelsPerSecond;
         }
     }
-    private void DrawLaneContent(Rect controlRect)
+    private void DrawLaneContent(Rect controlRect, LaneSO lane)
     {
-        List<Spawn> spawns = waveData.spawns;
+        List<Spawn> spawns = waveData.spawns.Where(it => it.lane = lane).ToList();
         for (var i = 0; i < spawns.Count; i++)
         {
             Spawn spawn = spawns[i];
-            DrawSpawn(controlRect, spawn, settings);
+            SpawnView.DrawSpawn(controlRect, spawn, settings);
         }
-    }
-    private static void DrawSpawn(Rect controlRect, Spawn spawn, WaveViewSettings waveViewSettings)
-    {
-        float startPixel = (controlRect.x + spawn.StartTime) * waveViewSettings.PixelPerSecond;
-        float widthPixel = (spawn.EndTime - spawn.StartTime) * waveViewSettings.PixelPerSecond;
-        var spawnRect = new Rect(controlRect) {x = startPixel, width = widthPixel};
-        EditorGUI.LabelField(spawnRect,
-            "box",
-            Styles.spawn);
-        EditorGUIUtility.AddCursorRect(spawnRect, MouseCursor.Pan);
     }
 }
