@@ -8,11 +8,7 @@ public class Bomb : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        bool isEnemy = other.CompareTag("Enemy");
-        if (isEnemy)
-        {
-            Instantiate(explosion, transform.position, quaternion.identity);
-        }
+        Instantiate(explosion, transform.position, quaternion.identity);
         Destroy(gameObject);
     }
 }
