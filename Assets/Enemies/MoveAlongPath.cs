@@ -18,6 +18,11 @@ public class MoveAlongPath : MonoBehaviour
         _path = pathCreator.path;
     }
 
+    public void SetPath(PathCreator pathCreator)
+    {
+        _path = pathCreator.path;   
+    }
+
     void Update()
     {
         Vector3 currentPosition = transform.position;
