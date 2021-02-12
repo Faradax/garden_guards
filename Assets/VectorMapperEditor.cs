@@ -5,9 +5,27 @@ using UnityEngine;
 [CustomEditor(typeof(VectorMapper))]
 public class VectorMapperEditor : Editor
 {
+    private VectorMapper _vectorMapper;
+
+    private void OnEnable()
+    {
+        _vectorMapper = (VectorMapper) target;
+    }
+
+    public override void OnInspectorGUI()
+    {
+        var o = new SerializedObject(target);
+        Undo.RecordObject(target, "VectorMapper changed");
+        _vectorMapper.subdivisions = EditorGUILayout.IntSlider(_vectorMapper.subdivisions, 4, 100);
+        if (GUILayout.Button("Calculate"))
+        {
+            _vectorMapper.MapVectorField();
+        }      
+}
+    
     private void OnSceneGUI()
     {
-        VectorMapper mapper = (VectorMapper) target;
+        VectorMapper mapper = _vectorMapper;
         Vector3 offset = new Vector3(-mapper.area / 2, 0, -mapper.area / 2);
         float stepSize = mapper.area / mapper.subdivisions;
         for (var i = 0; i < mapper.vectors.Length; i++)
