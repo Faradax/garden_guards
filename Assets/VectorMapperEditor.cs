@@ -1,4 +1,5 @@
 using System;
+using PathCreation;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,9 +15,12 @@ public class VectorMapperEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        var o = new SerializedObject(target);
         Undo.RecordObject(target, "VectorMapper changed");
-        _vectorMapper.subdivisions = EditorGUILayout.IntSlider(_vectorMapper.subdivisions, 4, 100);
+        _vectorMapper.pathCreators[0] = (PathCreator) EditorGUILayout.ObjectField(_vectorMapper.pathCreators[0], typeof(PathCreator), true);
+        _vectorMapper.area = EditorGUILayout.FloatField("Area", _vectorMapper.area);
+        _vectorMapper.subdivisions = EditorGUILayout.IntSlider("Subdivisions", _vectorMapper.subdivisions, 4, 100);
+        _vectorMapper.maxDistanceToPath = EditorGUILayout.FloatField("Max Distance to Path", _vectorMapper.maxDistanceToPath);
+        _vectorMapper.forwardWeightPower = EditorGUILayout.FloatField("Forward Weight Power", _vectorMapper.forwardWeightPower);
         if (GUILayout.Button("Calculate"))
         {
             _vectorMapper.MapVectorField();

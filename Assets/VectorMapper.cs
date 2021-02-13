@@ -14,7 +14,8 @@ public class VectorMapper : MonoBehaviour
     public List<PathCreator> pathCreators;
 
     public Vector3[] vectors = { };
-    public int distanceToPath = 3;
+    public float maxDistanceToPath = 3;
+    public float forwardWeightPower = 4;
 
     public void MapVectorField()
     {
@@ -33,10 +34,12 @@ public class VectorMapper : MonoBehaviour
                 Vector3 toPath = (pointOnPath) / 1 - samplePoint;
 
                 float distanceToPath = toPath.magnitude;
-                if (distanceToPath < this.distanceToPath)
+                if (distanceToPath < maxDistanceToPath)
                 {
-                    float forwardWeight = 1 - distanceToPath / this.distanceToPath;
+                    float farness = distanceToPath / maxDistanceToPath;
+                    float closeness = 1 - farness;
                     Vector3 forward = firstPath.GetDirection(timeOnPath);
+                    float forwardWeight = Mathf.Pow(closeness, forwardWeightPower);
                     toPath = Vector3.Lerp(toPath.normalized, forward, forwardWeight);
                 }
 
