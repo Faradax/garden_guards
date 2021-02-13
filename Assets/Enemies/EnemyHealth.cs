@@ -5,18 +5,20 @@ public class EnemyHealth : MonoBehaviour
 {
     public EnemySO enemySo;
 
-    public int health;
+    public int Current { get; set; }
+    
+    public int Max => enemySo.maxHealth;
 
     private void Start()
     {
-        health = enemySo.maxHealth;
+        Current = enemySo.maxHealth;
     }
 
     public void TakeDamage(int amount)
     {
-        health -= amount;
+        Current -= amount;
 
-        if (health <= 0)
+        if (Current <= 0)
         {
             Destroy(gameObject);
         }
