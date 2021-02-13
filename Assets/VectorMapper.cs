@@ -66,8 +66,12 @@ public class VectorMapper : MonoBehaviour, ISerializationCallbackReceiver
 
         float xWeight = floatXIndex - xIndex;
         float zWeight = floatZIndex - zIndex;
-
+        
         Vector3 q0 = vectors[xIndex, zIndex];
+        if (xIndex == subdivisions - 1 || zIndex == subdivisions - 1)
+        {
+            return q0;
+        }
         Vector3 q1 = vectors[xIndex+1, zIndex];
         Vector3 q2 = vectors[xIndex, zIndex+1];
         Vector3 q3 = vectors[xIndex+1, zIndex+1];
