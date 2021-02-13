@@ -32,12 +32,13 @@ public class VectorMapperEditor : Editor
         VectorMapper mapper = _vectorMapper;
         Vector3 offset = new Vector3(-mapper.area / 2, 0, -mapper.area / 2);
         float stepSize = mapper.area / mapper.subdivisions;
-        for (var i = 0; i < mapper.vectors.Length; i++)
+        for (var i = 0; i < mapper.vectors.GetLength(0); i++)
         {
-            int x = i % mapper.subdivisions;
-            int z = i / mapper.subdivisions;
-            Vector3 start = offset + new Vector3(x * stepSize, 0, z * stepSize) + mapper.transform.position;
-            Handles.DrawLine(start, start + mapper.vectors[i]*.4f);
+            for (var j = 0; j < mapper.vectors.GetLength(1); j++)
+            {
+                Vector3 start = offset + new Vector3(i * stepSize, 0, j * stepSize) + mapper.transform.position;
+                Handles.DrawLine(start, start + mapper.vectors[i, j]*.4f);
+            }
         }
         Handles.DrawWireCube(mapper.transform.position, new Vector3(mapper.area, 1, mapper.area));
     }
