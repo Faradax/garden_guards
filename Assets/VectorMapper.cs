@@ -59,12 +59,27 @@ public class VectorMapper : MonoBehaviour, ISerializationCallbackReceiver
         float xRelative = Mathf.Clamp01(Mathf.InverseLerp(leftBorder, rightBorder, currentPosition.x));
         float zRelative = Mathf.Clamp01(Mathf.InverseLerp(topBorder, bottomBorder, currentPosition.z));
 
-        int xIndex = (int) (xRelative * subdivisions);
-        int zIndex = (int) (zRelative * subdivisions);
-        return vectors[xIndex, zIndex];
+        float floatXIndex = xRelative * subdivisions;
+        int xIndex = (int) floatXIndex;
+        float floatZIndex = zRelative * subdivisions;
+        int zIndex = (int) floatZIndex;
+
+        float xWeight = floatXIndex - xIndex;
+        float zWeight = floatZIndex - zIndex;
+
+        Vector3 q0 = vectors[xIndex, zIndex];
+        Vector3 q1 = vectors[xIndex+1, zIndex];
+        Vector3 q2 = vectors[xIndex, zIndex+1];
+        Vector3 q3 = vectors[xIndex+1, zIndex+1];
+
+        Vector3 r0 = Vector3.Lerp(q0, q1, xWeight);
+        Vector3 r1 = Vector3.Lerp(q2, q3, xWeight);
+        Vector3 p = Vector3.Lerp(r0, r1, zWeight);
+        return p;
     }
 
-    
+    #region Serialization
+
     public void OnBeforeSerialize()
     {
         serializedVectors = new Vector3[subdivisions * subdivisions];
@@ -85,4 +100,6 @@ public class VectorMapper : MonoBehaviour, ISerializationCallbackReceiver
             vectors[x, z] = serializedVectors[i];
         }
     }
+
+    #endregion
 }
