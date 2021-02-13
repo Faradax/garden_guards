@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveInVectorField : MonoBehaviour
@@ -15,6 +12,11 @@ public class MoveInVectorField : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
+    public void SetVectorMapper(VectorMapper mapper)
+    {
+        map = mapper;
+    }
+    
     void Update()
     {
         Vector3 currentPosition = transform.position;
@@ -24,6 +26,6 @@ public class MoveInVectorField : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody.velocity = _desiredDirection * 5;
+        _rigidbody.velocity = _desiredDirection * 2;
     }
 }

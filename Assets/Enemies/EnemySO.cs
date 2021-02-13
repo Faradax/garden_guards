@@ -6,4 +6,5 @@ using UnityEngine;
 public class EnemySO : ScriptableObject
 {
     public GameObject asset;
+    public int maxHealth;
 }

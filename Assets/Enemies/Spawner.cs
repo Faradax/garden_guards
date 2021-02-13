@@ -1,14 +1,12 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using PathCreation;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
 
     public GameObject enemy;
-    public PathCreator pathCreator;
+    public VectorMapper vectorMapper;
+    public float seconds = 3;
     private Coroutine _spawn;
 
     void Start()
@@ -21,9 +19,9 @@ public class Spawner : MonoBehaviour
         while (true)
         {
             GameObject enemyGameObject = Instantiate(enemy, transform.position, Quaternion.identity);
-            var moveAlongPath = enemyGameObject.GetComponent<MoveAlongPath>();
-            moveAlongPath.SetPath(pathCreator);
-            yield return new WaitForSeconds(3);
+            var moveAlongPath = enemyGameObject.GetComponent<MoveInVectorField>();
+            moveAlongPath.SetVectorMapper(vectorMapper);
+            yield return new WaitForSeconds(seconds);
         }
     }
 

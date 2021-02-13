@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 9063729476847055433}
   - component: {fileID: 9203861972920995738}
   - component: {fileID: 7636636824506725980}
+  - component: {fileID: -4611377806780518962}
+  - component: {fileID: -435369950758930055}
   m_Layer: 0
   m_Name: Smol
   m_TagString: Enemy
@@ -112,3 +114,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-4611377806780518962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289505880547381615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa5ecd1a5c5c4875b1b6a58f595f5195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySo: {fileID: 11400000, guid: 049e98ee03a54aa3c86f14aea690c69d, type: 2}
+  health: 0
+--- !u!114 &-435369950758930055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289505880547381615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94a871fbb2d69489b5eb23efb0cbf3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 0}
