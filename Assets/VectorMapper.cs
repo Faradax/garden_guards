@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using PathCreation;
@@ -106,4 +107,36 @@ public class VectorMapper : MonoBehaviour, ISerializationCallbackReceiver
     }
 
     #endregion
+
+    public void ApplyMouse(Vector3 mouseInField, Vector3 mouseDeltaNormalized)
+    {
+        Vector3 center = transform.position;
+        float leftBorder = center.x - area / 2;
+        float rightBorder = center.x + area / 2;
+        float topBorder = center.z - area / 2;
+        float bottomBorder = center.z + area / 2;
+        float xRelative = Mathf.Clamp01(Mathf.InverseLerp(leftBorder, rightBorder, mouseInField.x));
+        float zRelative = Mathf.Clamp01(Mathf.InverseLerp(topBorder, bottomBorder, mouseInField.z));
+
+        float floatXIndex = xRelative * subdivisions;
+        int xIndex = (int) floatXIndex;
+        float floatZIndex = zRelative * subdivisions;
+        int zIndex = (int) floatZIndex;
+
+        int xmin = Math.Max(0, xIndex - 3);
+        int zmin = Math.Max(0, zIndex - 3);
+        int xmax = Math.Min(subdivisions-1, xIndex + 3);
+        int zmax = Math.Min(subdivisions-1, zIndex + 3);
+        for (int i = xmin; i <= xmax; i++)
+        {
+            for (int j = zmin; j <= zmax; j++)
+            {
+                float distanceToCenter = (new Vector2(i, j) - new Vector2(xIndex, zIndex)).magnitude/3;
+                distanceToCenter = Mathf.Clamp01(distanceToCenter);
+                vectors[i, j] = Vector3.Lerp(vectors[i, j], mouseDeltaNormalized, 1-distanceToCenter);
+            }    
+        }
+
+
+    }
 }
