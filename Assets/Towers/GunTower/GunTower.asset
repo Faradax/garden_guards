@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
-  m_Name: Ballista
+  m_Name: GunTower
   m_EditorClassIdentifier: 
-  asset: {fileID: 2434195764557205660, guid: 88645d4fec9575379a9dd6984f73b757, type: 3}
+  asset: {fileID: 4106630053610977557, guid: d6e943e4b4d401939a99769318a67e78, type: 3}

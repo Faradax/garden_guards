@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     public float seconds = 3;
     private Coroutine _spawn;
 
-    void Start()
+    void OnEnable()
     {
         _spawn = StartCoroutine(LoopSpawn());
     }

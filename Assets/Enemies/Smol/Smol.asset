@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Smol
   m_EditorClassIdentifier: 
   asset: {fileID: 289505880547381615, guid: cb3a186f16b595e06a7f5c6494b57e3b, type: 3}
-  maxHealth: 2
+  maxHealth: 20
