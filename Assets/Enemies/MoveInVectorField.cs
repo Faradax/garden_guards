@@ -27,5 +27,6 @@ public class MoveInVectorField : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidbody.velocity = _desiredDirection * 2;
+        transform.forward = _desiredDirection.normalized;
     }
 }
