@@ -1,9 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
     public EnemySO enemySo;
+    private Material _flashMat;
+    private Renderer _renderer;
+    private Material _orignalMaterial;
 
     public int Current { get; set; }
     
@@ -11,6 +15,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
+        _renderer = GetComponent<Renderer>();
+        _flashMat = new Material(Shader.Find("Universal Render Pipeline/Unlit"));
+        _flashMat.color = Color.white;
+        _orignalMaterial = _renderer.material;
         Current = enemySo.maxHealth;
     }
 
@@ -18,9 +26,18 @@ public class EnemyHealth : MonoBehaviour
     {
         Current -= amount;
 
+        StartCoroutine(Flash());
+        
         if (Current <= 0)
         {
             Destroy(gameObject);
         }
+    }
+    private IEnumerator Flash()
+    {
+        _renderer.material = _flashMat;
+        yield return new WaitForSeconds(0.025f);
+        _renderer.material = _orignalMaterial;
+
     }
 }
