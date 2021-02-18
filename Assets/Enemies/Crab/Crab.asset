@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Crab
   m_EditorClassIdentifier: 
   asset: {fileID: 0}
-  maxHealth: 50
+  maxHealth: 10
