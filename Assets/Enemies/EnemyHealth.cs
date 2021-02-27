@@ -40,4 +40,14 @@ public class EnemyHealth : MonoBehaviour
         _renderer.material = _orignalMaterial;
 
     }
+
+    private void OnEnable()
+    {
+        enemySo.counter.Increase();
+    }
+    
+    private void OnDisable()
+    {
+        enemySo.counter.Decrease();
+    }
 }
