@@ -1,0 +1,53 @@
+Level
+  Show Enemies
+  Set up "Cards"
+  Waves
+    Wave [n]:
+      Present Draft
+      Start Prep Timer
+      Await Prep Timer || Manual Start
+      Play Wave Spawns
+      Await Boss Spawn cooldown?
+      Await Win || Lose
+      
+      
+Can placing Towers make Game harder?
+ - Tower sprays bugs golden -> give more money, but 3x HP
+ - Some with Friendly Fire (Cannon, Confusion Wave, Fire, etc)
+ - Towers attract additional (resistant?) monsters
+ - Downsides could outscale Tower count ("For every 2 Gun Towers, X spawns twice")
+ - Unique Downsides ("Every 10 exploding Cannonballs, a Mole spawns")
+ - Towers can get damaged & be destroyed
+ - Towers in Pairs?
+ - Some damage types can buff certain monsters
+
+Synergies between towers
+ Explicit:
+   - Buff Auras
+   - Placement Buffs
+   - Group Buffs
+ Implicit:
+   - Using FF to trigger some Retaliation-Tower
+   - Debuffs like slow, armor reduction, whatev
+   
+ 
+Upgrading Towers?
+VS
+Upgrading Tower Cards?
+
+Towers:
+Simple Level up (Stats+) by defeating enemies?
+Obtain temporary buffs by defeating special enemies?
+Permanent Buffs as Cards?
+Same Card Same Tower -> Upgrade?
+Mod Cards? (Hades, Transistor)
+
+
+Cards:
+Simple Upgrade Tree?
+What are upgrade conditions?
+ - Achievements?
+ - Materials?
+ - Kill counts?
+ - Level Progress?
+
