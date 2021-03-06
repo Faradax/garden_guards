@@ -9,7 +9,13 @@ Level
       Play Wave Spawns
       Await Boss Spawn cooldown?
       Await Win || Lose
-      
+
+Drafting and Buying
+ - The Shop offers 5 items upon the start of the game.
+ - Each new wave, items are drafted until 5 items are on offer.
+ - Each item can be bought individually in exchange for coins.
+ - The entire draft can be replaced (once per wave / once per red coin / for exponentially increasing prices?)
+
       
 Can placing Towers make Game harder?
  - Tower sprays bugs golden -> give more money, but 3x HP

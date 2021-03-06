@@ -3522,6 +3522,7 @@ MonoBehaviour:
   onPreparationStart: {fileID: 11400000, guid: b2a0c37863ee3d4f1beef25ec0aa7da6, type: 2}
   shopables:
   - {fileID: 5047006464452130113, guid: 6cc85e185d82321a6b938bd0b0450e14, type: 3}
+  - {fileID: 999457713528886122, guid: 8ab705c371cc14cc88bf3dbfe1521249, type: 3}
 --- !u!1001 &2946413790461537602
 PrefabInstance:
   m_ObjectHideFlags: 0
