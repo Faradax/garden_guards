@@ -10,10 +10,16 @@ public class Shop : MonoBehaviour
     public GameEvent onPreparationStart;
 
     public List<GameObject> shopables;
-    
+    private Random _random;
+
     void Start()
     {
         onPreparationStart.Event += Draft;
+    }
+
+    private void OnEnable()
+    {
+        _random = new Random();
     }
     private void Draft()
     {
@@ -32,7 +38,7 @@ public class Shop : MonoBehaviour
         {
             throw new Exception("No shopables available!");
         }
-        int randomShopableIndex = new Random().Next(shopablesCount);
+        int randomShopableIndex = _random.Next(shopablesCount);
         return shopables[randomShopableIndex];
     }
 }
