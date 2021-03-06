@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Garden Guards/Game Event", fileName = "")]
 public class GameEvent : ScriptableObject
 {
-    public event Action Event;
+    public UnityEvent Event;
 
     public void Invoke()
     {

@@ -13,6 +13,7 @@ public class InteractionController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip pickUpClip;
     public AudioClip setDownClip;
+    public AudioClip buy;
 
     private void OnEnable()
     {
@@ -61,8 +62,8 @@ public class InteractionController : MonoBehaviour
         _carryableTransform.parent = ownTransform;
         _carryableTransform.localPosition = Vector3.forward + Vector3.up;
 
-        audioSource.clip = pickUpClip;
-        audioSource.Play();
+     //   audioSource.clip = pickUpClip;
+     //   audioSource.Play();
     }
 
     private void Drop()
@@ -85,6 +86,11 @@ public class InteractionController : MonoBehaviour
             audioSource.clip = setDownClip;
             audioSource.Play();
         }
+    }
+    public void Buy(int price)
+    {
+        audioSource.clip = buy;
+        audioSource.Play();
     }
 }
 }

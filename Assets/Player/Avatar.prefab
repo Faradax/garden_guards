@@ -232,6 +232,7 @@ MonoBehaviour:
   audioSource: {fileID: -55397431207986184}
   pickUpClip: {fileID: 8300000, guid: 528a74f03bcb834f3893b8e0f970f605, type: 3}
   setDownClip: {fileID: 8300000, guid: f3a77eef08999ea3392b138395c7a02a, type: 3}
+  buy: {fileID: 8300000, guid: 2de8b9e6a5517bddfa7bf6a5b746bafe, type: 3}
 --- !u!114 &1056629826480445062
 MonoBehaviour:
   m_ObjectHideFlags: 0

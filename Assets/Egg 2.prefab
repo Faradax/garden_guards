@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 999457713528886120}
   - component: {fileID: 999457713528886121}
   m_Layer: 0
-  m_Name: Egg 1
+  m_Name: Egg 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cbab46fedc978f2a5e87d14a75f10f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerAsset: {fileID: 2434195764557205660, guid: 88645d4fec9575379a9dd6984f73b757, type: 3}
+  towerAsset: {fileID: 4106630053610977557, guid: d6e943e4b4d401939a99769318a67e78, type: 3}

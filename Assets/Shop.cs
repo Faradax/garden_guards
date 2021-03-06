@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
@@ -14,7 +13,8 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
-        onPreparationStart.Event += Draft;
+        onPreparationStart.Event.AddListener(Draft);
+        Draft();
     }
 
     private void OnEnable()
