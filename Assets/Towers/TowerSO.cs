@@ -6,7 +6,4 @@ using UnityEngine;
 public class TowerSO : ScriptableObject
 {
     public GameObject asset;
-    public GameObject previewAsset;
-    [Min(0)]
-    public int price;
 }

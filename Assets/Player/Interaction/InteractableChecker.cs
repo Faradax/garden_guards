@@ -47,6 +47,7 @@ public class InteractableChecker : MonoBehaviour
         return results
             .Select(it => it.GetComponent<Interactable>())
             .Where(it => it)
+            .Where(it => it.IsInteractable())
             .Where(_filter)
             .OrderBy(it => Vector3.SqrMagnitude(it.transform.position - transform.position))
             .FirstOrDefault();
