@@ -6,16 +6,16 @@ using UnityEngine;
 public class ItemStand : Interactable
 {
 
-    public ShopItemSO item;
+    private ShopItemSO item;
 
     private GameObject preview;
 
-    private bool hasItem = false;
+    public bool HasItem { get; private set; }
     
     private void OnEnable()
     {
         preview = Instantiate(item.previewAsset, transform.position + Vector3.up, Quaternion.identity);
-        hasItem = true;
+        HasItem = true;
     }
 
     private void OnDisable()
@@ -32,11 +32,19 @@ public class ItemStand : Interactable
         interactionController.PickUp(boughtItem);
         Destroy(preview);
         item = null;
-        hasItem = false;
+        HasItem = false;
     }
 
     public override bool IsInteractable()
     {
-        return hasItem;
+        return HasItem;
+    }
+
+    public void UpdateItem(ShopItemSO randomShopItem)
+    {
+        item = randomShopItem;
+        if (preview) { Destroy(preview); }
+        preview = Instantiate(item.previewAsset, transform.position + Vector3.up, Quaternion.identity);
+        HasItem = true;
     }
 }

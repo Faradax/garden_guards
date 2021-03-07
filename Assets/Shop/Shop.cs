@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using DefaultNamespace.Shop;
 using UnityEngine;
 using Random = System.Random;
 
@@ -8,7 +10,8 @@ public class Shop : MonoBehaviour
 
     public GameEvent onPreparationStart;
 
-    public List<GameObject> shopables;
+    public List<ShopItemSO> shopItems;
+    private List<ItemStand> itemStands;
     private Random _random;
 
     void Start()
@@ -20,25 +23,24 @@ public class Shop : MonoBehaviour
     private void OnEnable()
     {
         _random = new Random();
+        itemStands = GetComponentsInChildren<ItemStand>().ToList();
     }
+    
     private void Draft()
     {
-        for (int i = 0; i < 5; i++)
+        foreach (ItemStand itemStand in itemStands.Where(itemStand => !itemStand.HasItem))
         {
-            var shopable = RandomShopable();
-            var position = new Vector3(1.5f, 0.45f, -1.5f + 0.75f * i);
-            position += transform.position;
-            Instantiate(shopable, position, Quaternion.identity);
+            itemStand.UpdateItem(RandomShopItem());
         }
     }
-    private GameObject RandomShopable()
+    public ShopItemSO RandomShopItem()
     {
-        int shopablesCount = shopables.Count;
+        int shopablesCount = shopItems.Count;
         if (shopablesCount == 0)
         {
             throw new Exception("No shopables available!");
         }
         int randomShopableIndex = _random.Next(shopablesCount);
-        return shopables[randomShopableIndex];
+        return shopItems[randomShopableIndex];
     }
 }
