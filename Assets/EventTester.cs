@@ -6,6 +6,6 @@ public class EventTester : MonoBehaviour
     
     void Start()
     {
-        gameOverEvent.Event += () => Debug.Log("Game is over now :(");
+        gameOverEvent.Event.AddListener(() => Debug.Log("Game is over now :("));
     }
 }
