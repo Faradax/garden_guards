@@ -64,8 +64,8 @@ public class InteractionController : MonoBehaviour
         _carryableTransform.parent = ownTransform;
         _carryableTransform.localPosition = Vector3.forward + Vector3.up;
 
-     //   audioSource.clip = pickUpClip;
-     //   audioSource.Play();
+     audioSource.clip = pickUpClip;
+     audioSource.Play();
     }
 
     private void Drop()
@@ -82,12 +82,10 @@ public class InteractionController : MonoBehaviour
      */
     public void Interact(TowerSpot towerSpot)
     {
-        if (_carryableTransform)
-        {
-            towerSpot.AcceptSeed(_carryableTransform);
-            audioSource.clip = setDownClip;
-            audioSource.Play();
-        }
+        if (!_carryableTransform) return;
+        towerSpot.AcceptSeed(_carryableTransform);
+        audioSource.clip = setDownClip;
+        audioSource.Play();
     }
 }
 }

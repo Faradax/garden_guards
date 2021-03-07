@@ -6,10 +6,12 @@ using UnityEngine;
 public class ItemStand : Interactable
 {
 
+    public AudioSource source;
+    public AudioClip clip;
+    
     private ShopItemSO item;
-
     private GameObject preview;
-
+    
     public bool HasItem { get; private set; }
 
     private void OnDisable()
@@ -22,6 +24,8 @@ public class ItemStand : Interactable
         if (item == null) return;
 
         if (!interactionController.playerWealth.Reduce(item.price)) return;
+        
+        source.PlayOneShot(clip);
         GameObject boughtItem = Instantiate(item.previewAsset, transform.position, Quaternion.identity);
         interactionController.PickUp(boughtItem);
         Destroy(preview);
