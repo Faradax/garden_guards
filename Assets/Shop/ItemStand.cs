@@ -11,12 +11,6 @@ public class ItemStand : Interactable
     private GameObject preview;
 
     public bool HasItem { get; private set; }
-    
-    private void OnEnable()
-    {
-        preview = Instantiate(item.previewAsset, transform.position + Vector3.up, Quaternion.identity);
-        HasItem = true;
-    }
 
     private void OnDisable()
     {
@@ -45,6 +39,7 @@ public class ItemStand : Interactable
         item = randomShopItem;
         if (preview) { Destroy(preview); }
         preview = Instantiate(item.previewAsset, transform.position + Vector3.up, Quaternion.identity);
+        preview.transform.parent = transform;
         HasItem = true;
     }
 }
