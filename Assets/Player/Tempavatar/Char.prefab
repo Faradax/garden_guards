@@ -427,6 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableChecker: {fileID: 2946413791139370436}
+  playerWealth: {fileID: 11400000, guid: 38437186c034ee386949951fb91bd860, type: 2}
   audioSource: {fileID: 2946413791139370439}
   pickUpClip: {fileID: 8300000, guid: 528a74f03bcb834f3893b8e0f970f605, type: 3}
   setDownClip: {fileID: 8300000, guid: f3a77eef08999ea3392b138395c7a02a, type: 3}

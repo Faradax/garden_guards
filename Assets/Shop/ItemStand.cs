@@ -20,8 +20,8 @@ public class ItemStand : Interactable
     public override void OnTryInteract(InteractionController interactionController)
     {
         if (item == null) return;
-        
-        interactionController.Buy(item.price);
+
+        if (!interactionController.playerWealth.Reduce(item.price)) return;
         GameObject boughtItem = Instantiate(item.previewAsset, transform.position, Quaternion.identity);
         interactionController.PickUp(boughtItem);
         Destroy(preview);

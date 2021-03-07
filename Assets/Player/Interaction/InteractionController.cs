@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace.Player;
 using Tower_Spot;
 using UnityEngine;
 
@@ -9,7 +10,8 @@ public class InteractionController : MonoBehaviour
     private Transform _carryableTransform;
 
     public InteractableChecker interactableChecker;
-
+    public Wealth playerWealth;
+    
     public AudioSource audioSource;
     public AudioClip pickUpClip;
     public AudioClip setDownClip;
@@ -86,11 +88,6 @@ public class InteractionController : MonoBehaviour
             audioSource.clip = setDownClip;
             audioSource.Play();
         }
-    }
-    public void Buy(int price)
-    {
-        audioSource.clip = buy;
-        audioSource.Play();
     }
 }
 }

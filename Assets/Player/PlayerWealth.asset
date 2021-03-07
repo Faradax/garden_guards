@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5086eeb721684dfbabbcbe351864f210, type: 3}
-  m_Name: CannonShopItem
+  m_Script: {fileID: 11500000, guid: 53b1397f005a4bc2a8136c60e8fad12a, type: 3}
+  m_Name: PlayerWealth
   m_EditorClassIdentifier: 
-  price: 50
-  previewAsset: {fileID: 5047006464452130113, guid: 6cc85e185d82321a6b938bd0b0450e14, type: 3}
+  NotEnough:
+    m_PersistentCalls:
+      m_Calls: []
+  Changed:
+    m_PersistentCalls:
+      m_Calls: []
