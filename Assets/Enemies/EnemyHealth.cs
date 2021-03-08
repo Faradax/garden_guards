@@ -30,9 +30,18 @@ public class EnemyHealth : MonoBehaviour
         
         if (Current <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
+    private void Die()
+    {
+        for (var i = 0; i < enemySo.lootAmount; i++)
+        {
+            Instantiate(enemySo.lootAsset, transform.position, Quaternion.identity);
+        }
+        Destroy(gameObject);
+    }
+    
     private IEnumerator Flash()
     {
         _renderer.material = _flashMat;

@@ -10,4 +10,7 @@ public class EnemySO : ScriptableObject
     public int maxHealth;
 
     public Counter counter;
+
+    public int lootAmount;
+    public GameObject lootAsset;
 }

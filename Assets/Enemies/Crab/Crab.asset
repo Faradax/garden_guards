@@ -15,3 +15,5 @@ MonoBehaviour:
   asset: {fileID: 0}
   maxHealth: 10
   counter: {fileID: 11400000, guid: 96ed2b4383ccff7998f76b455b882747, type: 2}
+  lootAmount: 5
+  lootAsset: {fileID: 4718305373698842869, guid: 360a8f1baf868c54ca2efdecf90683da, type: 3}
