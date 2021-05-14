@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Enemies
 {
@@ -11,6 +12,8 @@ public class Counter : ScriptableObject
     public int Value { get; private set; } = 0;
 
     public event Action<int> ValueChanged;
+    
+    public UnityEvent valueZero;
 
     private void OnEnable()
     {
@@ -27,6 +30,10 @@ public class Counter : ScriptableObject
     {
         Value--;
         ValueChanged?.Invoke(Value);
+        if (Value == 0)
+        {
+            valueZero.Invoke();
+        }
     }
 }
 }
