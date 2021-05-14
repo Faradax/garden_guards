@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveAlongPath : MonoBehaviour
 {
 
-    public float speed = 1.5f;
+    public float speed = 2.5f;
     
     private VertexPath _path;
     private Vector3 _desiredDirection;

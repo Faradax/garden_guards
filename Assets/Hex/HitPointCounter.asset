@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6229fd11e4c71c83695eff1299146d92, type: 3}
   m_Name: HitPointCounter
   m_EditorClassIdentifier: 
-  initialValue: 10
+  initialValue: 1
   valueZero:
     m_PersistentCalls:
       m_Calls:

@@ -1334,8 +1334,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 763896035}
-  - component: {fileID: 763896037}
   - component: {fileID: 763896036}
+  - component: {fileID: 763896037}
+  - component: {fileID: 763896038}
   m_Layer: 0
   m_Name: Game Over Effect
   m_TagString: Untagged
@@ -1370,11 +1371,25 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 0}
+  m_PanelSettings: {fileID: 11400000, guid: 8111be1ac91f1b9b7a2ee0c2758c132f, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 0}
-  m_SortingOrder: 0
+  sourceAsset: {fileID: 9197481963319205126, guid: 950cc3ac77d86af24996025a0913d056, type: 3}
+  m_SortingOrder: 1
 --- !u!114 &763896037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763896034}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a39f305772ca73e3b4496c4781ca7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 1
+  uiDocument: {fileID: 763896036}
+--- !u!114 &763896038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1383,9 +1398,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 763896034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a39f305772ca73e3b4496c4781ca7e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ea5365051fa296bcaa312cdc77ebe65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d4b0f35833019eab49e9f6f6cc629640, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 763896037}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1001 &781117665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2878,7 +2909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4861396270556054209, guid: c6c0f353cfaf684bf8d6ac077556c9fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4861396270556054209, guid: c6c0f353cfaf684bf8d6ac077556c9fb, type: 3}
       propertyPath: m_LocalPosition.z
