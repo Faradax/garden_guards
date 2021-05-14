@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="right: 0; width: 300px; position: absolute; background-color: rgba(0, 0, 0, 0.52);">
+        <ui:Label text="INFO" display-tooltip-when-elided="true" style="color: rgb(199, 199, 199);" />
+        <ui:Label display-tooltip-when-elided="true" name="tileName" style="color: rgb(199, 199, 199);" />
+    </ui:VisualElement>
+</ui:UXML>

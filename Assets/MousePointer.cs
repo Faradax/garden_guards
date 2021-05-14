@@ -14,6 +14,8 @@ public class MousePointer : MonoBehaviour
     private Clickable _hovered;
 
     public UnityEvent<Clickable> unityClickableSelected;
+    public UnityEvent<Tile> tileHovered;
+    
     private void Start()
     {
         _camera = GetComponent<Camera>();
@@ -35,7 +37,13 @@ public class MousePointer : MonoBehaviour
         if (currentlyHovered)
         {
             currentlyHovered.OnMouseEnter();
+            var tile = currentlyHovered.GetComponent<Tile>();
+            tileHovered.Invoke(tile);
             _hovered = currentlyHovered;
+        }
+        else
+        {
+            tileHovered.Invoke(null);
         }
     }
 
