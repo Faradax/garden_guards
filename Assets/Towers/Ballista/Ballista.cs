@@ -11,6 +11,7 @@ public class Ballista : MonoBehaviour
     private float cooldown = 1.7f;
     private Vector3 _rememberedVelocity;
     private Transform _target;
+    public float radius = 2f;
 
     public void Update()
     {
@@ -31,7 +32,7 @@ public class Ballista : MonoBehaviour
 
     private void SearchForEnemy()
     {
-        Collider[] overlapSphere = Physics.OverlapSphere(transform.position, 5f);
+        Collider[] overlapSphere = Physics.OverlapSphere(transform.position, radius);
 
         _target = null;
         foreach (Collider collider1 in overlapSphere)

@@ -7,6 +7,7 @@ public class GunTower : MonoBehaviour
     public GameObject projectileEffect;
     private float cooldown = 0.2f;
     private Transform _target;
+    public float radius = 2;
 
     public void Update()
     {
@@ -28,7 +29,7 @@ public class GunTower : MonoBehaviour
 
     private void SearchForEnemy()
     {
-        Collider[] overlapSphere = Physics.OverlapSphere(transform.position, 5f);
+        Collider[] overlapSphere = Physics.OverlapSphere(transform.position, radius);
 
         _target = null;
         foreach (Collider collider1 in overlapSphere)

@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Camera))]
@@ -11,6 +12,8 @@ public class MousePointer : MonoBehaviour
     private Camera _camera;
 
     private Clickable _hovered;
+
+    public UnityEvent<Clickable> unityClickableSelected;
     private void Start()
     {
         _camera = GetComponent<Camera>();
@@ -43,8 +46,7 @@ public class MousePointer : MonoBehaviour
         if (_hovered)
         {
             _hovered.OnClick();
-            GameObject instantiate = Instantiate(placeTower.asset);
-            instantiate.transform.position = _hovered.transform.position;
+            unityClickableSelected.Invoke(_hovered);
         }
     }
     

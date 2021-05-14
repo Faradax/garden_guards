@@ -5,8 +5,7 @@ using UnityEngine;
 public class MoveAlongPath : MonoBehaviour
 {
 
-    public PathCreator pathCreator;
-    public float speed;
+    public float speed = 1.5f;
     
     private VertexPath _path;
     private Vector3 _desiredDirection;
@@ -15,7 +14,6 @@ public class MoveAlongPath : MonoBehaviour
     private void OnEnable()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _path = pathCreator.path;
     }
 
     public void SetPath(PathCreator pathCreator)
@@ -25,6 +23,7 @@ public class MoveAlongPath : MonoBehaviour
 
     void Update()
     {
+        if (_path == null) return;
         Vector3 currentPosition = transform.position;
         float distanceAlongPath = _path.GetClosestDistanceAlongPath(currentPosition);
         // We can only see a short distance ahead, yet we can see plenty there that needs to be done.

@@ -23,6 +23,5 @@ public class Clickable : MonoBehaviour
     }
     public void OnClick()
     {
-        Debug.Log("Yeah");
     }
 }

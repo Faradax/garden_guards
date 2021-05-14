@@ -1,4 +1,4 @@
-Level
+﻿Level
   Show Enemies
   Set up "Cards"
   Waves
@@ -56,3 +56,15 @@ What are upgrade conditions?
  - Kill counts?
  - Level Progress?
 
+--BEHAVIOURS--
+Shop:
+emits: Tower Selection
+listens: Tower Completion
+
+BuildingFlow
+listens: Tower Selection
+listens: Tile Selection
+emits: Tower Completion
+
+BuildingPreview
+listens: Tile Hover
