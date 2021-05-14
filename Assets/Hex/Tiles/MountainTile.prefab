@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 379919637155003037}
   - component: {fileID: 4826911507961952353}
   - component: {fileID: 9076204943595142253}
+  - component: {fileID: -4793965990001127515}
   m_Layer: 0
   m_Name: MountainTile
   m_TagString: Untagged
@@ -128,5 +129,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79b54f5aa194ec9f390e2eed11d881fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4793965990001127515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257620429393756746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8936ef7af7410393a121d9aef08602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

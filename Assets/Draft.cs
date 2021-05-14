@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Draft: MonoBehaviour
@@ -8,6 +7,7 @@ public class Draft: MonoBehaviour
 
     public TowerSO[] pool;
     public List<TowerSO> current;
+    private bool _selectionMade;
     private int _index;
 
     public event Action draftRefresh;
@@ -15,10 +15,16 @@ public class Draft: MonoBehaviour
     
     public void OnClickableSelected(Clickable target)
     {
+        if (!_selectionMade) return;
+
+        var tile = target.GetComponent<Tile>();
+        if (!tile) return;
+        if (!tile.IsFree()) return;
+        
         TowerSO towerSo = current[_index];
-        GameObject asset = Instantiate(towerSo.asset);
+        tile.SpawnTower(towerSo);
         current.RemoveAt(_index);
-        asset.transform.position = target.transform.position;
+        _selectionMade = false;
         draftRefresh?.Invoke();
     }
 
@@ -29,6 +35,7 @@ public class Draft: MonoBehaviour
 
     public void ChangeSelection(int index)
     {
+        _selectionMade = true;
         _index = index;
     }
 }
