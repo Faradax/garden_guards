@@ -2,16 +2,52 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    private GameObject _thingOnTop;
 
-    public bool IsFree()
+    public TileSO tileSo;
+    public Shader darkShader;
+    
+    private GameObject _thingOnTop;
+    private Material _originalMaterial;
+    private Material _darkerMaterial;
+
+    private void OnEnable()
     {
-        return _thingOnTop == null;
+        _originalMaterial = GetComponent<MeshRenderer>().sharedMaterial;
+        _darkerMaterial = new Material(_originalMaterial);
+        _darkerMaterial.shader = darkShader;
+    }
+
+    public void OnTowerSelectionChanged(TowerSO towerSo)
+    {
+        if (!IsEligible(towerSo))
+        {
+            GetComponent<MeshRenderer>().material = _darkerMaterial;
+        }
+        else
+        {
+            GetComponent<MeshRenderer>().material = _originalMaterial;
+        }
+    }
+
+    public void OnTowerPlaced()
+    {
+        GetComponent<MeshRenderer>().material = _originalMaterial;
+    }
+
+    public bool IsEligible(TowerSO towerSo)
+    {
+        // TODO: respect Roads, Goal, etc
+        return towerSo.IsCompatible(this);
     }
 
     public void SpawnTower(TowerSO towerSo)
     {
         GameObject asset = Instantiate(towerSo.asset);
         asset.transform.position = transform.position;
+        foreach (Transform child in transform)
+        {
+            child.parent = null;
+            child.gameObject.SetActive(false);
+        }
     }
 }

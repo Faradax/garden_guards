@@ -21,9 +21,10 @@ public class Draft: MonoBehaviour
 
         var tile = target.GetComponent<Tile>();
         if (!tile) return;
-        if (!tile.IsFree()) return;
-        
+
         TowerSO towerSo = current[_index];
+        if (!tile.IsEligible(towerSo)) return;
+        
         tile.SpawnTower(towerSo);
         current.RemoveAt(_index);
         _selectionMade = false;

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Ballista
   m_EditorClassIdentifier: 
   asset: {fileID: 2434195764557205660, guid: 88645d4fec9575379a9dd6984f73b757, type: 3}
-  previewAsset: {fileID: 5047006464452130113, guid: 6cc85e185d82321a6b938bd0b0450e14, type: 3}
-  price: 20
+  compatibleTiles:
+  - {fileID: 11400000, guid: 4aa4a8a9bce2bba89b57026c20c1217b, type: 2}
+  - {fileID: 11400000, guid: ebeadfeca3d0f4bc8a33e46a535b8ed2, type: 2}
