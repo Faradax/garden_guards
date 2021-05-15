@@ -7,6 +7,7 @@ public class Draft: MonoBehaviour
 {
 
     public TowerSO[] pool;
+    public List<Shopable> pool2;
     public List<TowerSO> current;
     private bool _selectionMade;
     private int _index;

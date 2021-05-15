@@ -1,13 +1,17 @@
 using System.Collections;
 using PathCreation;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PathSpawner : MonoBehaviour
 {
 
     public GameObject enemy;
     public PathCreator pathCreator;
-    public float seconds = 3;
+    public float seconds = 2;
+    public float amount = 10;
+    public UnityEvent done;
+    
     private Coroutine _spawn;
 
     void OnEnable()
@@ -17,13 +21,16 @@ public class PathSpawner : MonoBehaviour
     
     private IEnumerator LoopSpawn()
     {
-        while (true)
+        var spawned = 0;
+        while (spawned < amount)
         {
             GameObject enemyGameObject = Instantiate(enemy, transform.position, Quaternion.identity);
             var moveAlongPath = enemyGameObject.AddComponent<MoveAlongPath>();
             moveAlongPath.SetPath(pathCreator);
+            spawned++;
             yield return new WaitForSeconds(seconds);
         }
+        done.Invoke();
     }
 
     private void OnDisable()
