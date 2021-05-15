@@ -7,10 +7,10 @@ public class Goal : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject);
-            hitPointCounter.Decrease();
-        }
+        if (hitPointCounter.Value == 0) return;
+        if (!other.CompareTag("Enemy")) return;
+        
+        Destroy(other.gameObject);
+        hitPointCounter.Decrease();
     }
 }

@@ -52,7 +52,7 @@ public class PreviewController : MonoBehaviour
     public void OnTileHovered(Tile tile)
     {
         if (!_preview) return;
-        if (tile)
+        if (tile && tile.IsEligible(_towerSo))
         {
             _preview.SetActive(true);
             _preview.transform.position = tile.transform.position;

@@ -36,8 +36,8 @@ public class Tile : MonoBehaviour
 
     public bool IsEligible(TowerSO towerSo)
     {
-        // TODO: respect Roads, Goal, etc
-        return towerSo.IsCompatible(this);
+        // TODO: respect Roads, etc
+        return !transform.Find("Goal") && towerSo.IsCompatible(this);
     }
 
     public void SpawnTower(TowerSO towerSo)
