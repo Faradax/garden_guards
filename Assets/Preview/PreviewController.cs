@@ -17,17 +17,27 @@ public class PreviewController : MonoBehaviour
         }
         _preview = Instantiate(towerSo.asset);
         _preview.SetActive(false);
+        ChangeMaterial();
+        StripBehaviours();
+
+    }
+    private void ChangeMaterial()
+    {
+
         MeshRenderer[] meshRenderers = _preview.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer meshRenderer in meshRenderers)
         {
             meshRenderer.material = previewMaterial;
         }
+    }
+    private void StripBehaviours()
+    {
+
         MonoBehaviour[] behaviours = _preview.GetComponentsInChildren<MonoBehaviour>();
         foreach (MonoBehaviour monoBehaviour in behaviours)
         {
             Destroy(monoBehaviour);
         }
-        
     }
 
     public void OnTowerPlaced()
