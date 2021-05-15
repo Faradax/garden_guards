@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Draft: MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class Draft: MonoBehaviour
     private int _index;
 
     public event Action draftRefresh;
-    public event Action<TowerSO> selectionChanged;
+    public UnityEvent<TowerSO> selectionChanged;
+    public UnityEvent<TowerSO> towerPlaced;
     
     public void OnClickableSelected(Clickable target)
     {
@@ -25,6 +27,7 @@ public class Draft: MonoBehaviour
         tile.SpawnTower(towerSo);
         current.RemoveAt(_index);
         _selectionMade = false;
+        towerPlaced.Invoke(towerSo);
         draftRefresh?.Invoke();
     }
 
@@ -37,5 +40,6 @@ public class Draft: MonoBehaviour
     {
         _selectionMade = true;
         _index = index;
+        selectionChanged.Invoke(current[index]);
     }
 }

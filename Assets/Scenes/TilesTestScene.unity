@@ -859,6 +859,138 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1450015581550827760, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
   m_PrefabInstance: {fileID: 375317482}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &386507444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386507445}
+  - component: {fileID: 386507448}
+  - component: {fileID: 386507449}
+  - component: {fileID: 386507447}
+  - component: {fileID: 386507446}
+  m_Layer: 0
+  m_Name: PreviewDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &386507445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386507444}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.41088963, y: -1.8554573, z: -1.2819433}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &386507446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386507444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b41ac89b2ad0a5acaeca6ad7617c644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewMaterial: {fileID: 2100000, guid: e280c0c79fbb001db9030b569d3dd5eb, type: 2}
+--- !u!114 &386507447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386507444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f50816dc5e137f291c2a2972107769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEvent: {fileID: 11400000, guid: 5fd613dd05ece5796986315ef32006a5, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 386507446}
+        m_TargetAssemblyTypeName: PreviewController, Assembly-CSharp
+        m_MethodName: OnTileHovered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &386507448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386507444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4621c954edbd4c4f933494ff71f3a37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerEvent: {fileID: 11400000, guid: 38adbadd21b411aedb0e03d67516050b, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 386507446}
+        m_TargetAssemblyTypeName: PreviewController, Assembly-CSharp
+        m_MethodName: OnTowerSelected
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &386507449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386507444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4621c954edbd4c4f933494ff71f3a37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerEvent: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 386507446}
+        m_TargetAssemblyTypeName: PreviewController, Assembly-CSharp
+        m_MethodName: OnTowerPlaced
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &440146686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2602,6 +2734,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: beaa8b1aba92dd583850484e942b9766, type: 2}
   - {fileID: 11400000, guid: 28258c7bada056fac80dab1db340b065, type: 2}
   - {fileID: 11400000, guid: beaa8b1aba92dd583850484e942b9766, type: 2}
+  selectionChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 38adbadd21b411aedb0e03d67516050b, type: 2}
+        m_TargetAssemblyTypeName: TowerEvent, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  towerPlaced:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
+        m_TargetAssemblyTypeName: TowerEvent, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1614513403
 GameObject:
   m_ObjectHideFlags: 0
