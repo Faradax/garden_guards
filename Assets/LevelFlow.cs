@@ -12,7 +12,8 @@ public class LevelFlow: MonoBehaviour
     public Counter enemyCounter;
     public Countdown preparationCountdown;
 
-    public UnityEvent done; 
+    public UnityEvent done;
+
     private void Start()
     {
         StartCoroutine(FlowRoutine());
@@ -30,21 +31,25 @@ public class LevelFlow: MonoBehaviour
     private IEnumerator RunWave()
     {
         yield return DoPreparationCountdown();
-        yield return LoopSpawn();
+        yield return SpawnEnemies();
         yield return WaitForLastEnemyToDie();
     }
-    private IEnumerator LoopSpawn()
-    {
-
-        return spawner.LoopSpawn();
-    }
-
     private IEnumerator DoPreparationCountdown()
     {
         yield return preparationCountdown.Run();
     }
+    private IEnumerator SpawnEnemies()
+    {
+
+        return spawner.LoopSpawn();
+    }
     private IEnumerator WaitForLastEnemyToDie()
     {
         yield return new WaitUntil(() => enemyCounter.Value == 0);
+    }
+
+    public void OnGameOver()
+    {
+        StopAllCoroutines();
     }
 }
