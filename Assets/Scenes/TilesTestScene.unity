@@ -2887,6 +2887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   document: {fileID: 1614513404}
   hitPointCounter: {fileID: 11400000, guid: d58e17cea086c4e4ca07adcbdc1f1d10, type: 2}
+  preparationCountdown: {fileID: 11400000, guid: 61ca4cafa48ef7627959e9fbb50e3f61, type: 2}
 --- !u!1001 &1640649494
 PrefabInstance:
   m_ObjectHideFlags: 0
