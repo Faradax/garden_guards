@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="card" style="color: rgb(255, 255, 255);">
+        <ui:Label text="Label" display-tooltip-when-elided="true" name="name" style="-unity-font-style: bold; font-size: 24px; color: rgb(255, 255, 255); background-color: rgb(54, 36, 82); border-left-width: 8px; border-right-width: 8px; border-top-width: 8px; border-bottom-width: 8px; border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-left-color: rgb(156, 120, 66); border-right-color: rgb(156, 120, 66); border-top-color: rgb(156, 120, 66); border-bottom-color: rgb(156, 120, 66); width: 266px;" />
+    </ui:VisualElement>
+</ui:UXML>

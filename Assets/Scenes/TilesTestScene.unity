@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 286001899}
-  wavesCount: 3
+  wavesCount: 4
   currentWaveIndex: 0
   enemyCounter: {fileID: 11400000, guid: 96ed2b4383ccff7998f76b455b882747, type: 2}
   preparationCountdown: {fileID: 11400000, guid: 61ca4cafa48ef7627959e9fbb50e3f61, type: 2}
