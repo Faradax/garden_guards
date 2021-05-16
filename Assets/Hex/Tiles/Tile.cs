@@ -50,10 +50,7 @@ public class Tile : MonoBehaviour
     {
         GameObject asset = Instantiate(towerSo.asset);
         asset.transform.position = transform.position;
-        foreach (Transform child in transform)
-        {
-            child.parent = null;
-            child.gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
