@@ -615,7 +615,7 @@ MonoBehaviour:
   pathCreator: {fileID: 107801811}
   allTiles: {fileID: 286001901}
   seconds: 3
-  amount: 20
+  amount: 3
   done:
     m_PersistentCalls:
       m_Calls:
@@ -907,8 +907,6 @@ GameObject:
   - component: {fileID: 396139628}
   - component: {fileID: 396139627}
   - component: {fileID: 396139626}
-  - component: {fileID: 396139630}
-  - component: {fileID: 396139629}
   m_Layer: 0
   m_Name: Game Won Effect
   m_TagString: Untagged
@@ -989,62 +987,6 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 24e9c2a89072d2ab7a57a0a7abe82765, type: 3}
   m_SortingOrder: 1
---- !u!114 &396139629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396139624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea5365051fa296bcaa312cdc77ebe65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 26c2509061b447fc4b5482994b8c0be9, type: 2}
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 396139630}
-        m_TargetAssemblyTypeName: WinCondition, Assembly-CSharp
-        m_MethodName: OnSpawningDone
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &396139630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396139624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 006ba3def74d035d7bbbe678bb26fc73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCounter: {fileID: 11400000, guid: 96ed2b4383ccff7998f76b455b882747, type: 2}
-  winConditionFulfilled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: d54ad0dd2cfccff3797b84e712ff6de1, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Invoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &457266962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1144,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1450015581550827760, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
   m_PrefabInstance: {fileID: 604094403}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &635655954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 635655956}
+  - component: {fileID: 635655955}
+  m_Layer: 0
+  m_Name: FLOW
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &635655955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635655954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57660bda14a0436fb38836576124a739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 286001899}
+  wavesCount: 3
+  currentWaveIndex: 0
+  enemyCounter: {fileID: 11400000, guid: 96ed2b4383ccff7998f76b455b882747, type: 2}
+  preparationCountdown: {fileID: 11400000, guid: 61ca4cafa48ef7627959e9fbb50e3f61, type: 2}
+--- !u!4 &635655956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635655954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2031466, y: 0.9858017, z: -1.0797625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &637622708
 PrefabInstance:
   m_ObjectHideFlags: 0

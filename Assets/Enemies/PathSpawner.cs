@@ -15,15 +15,12 @@ public class PathSpawner : MonoBehaviour
     public float amount = 10;
     public UnityEvent done;
     
-    private Coroutine _spawn;
-
     void OnEnable()
     {
         OnPathsEdited();
-        _spawn = StartCoroutine(LoopSpawn());
     }
     
-    private IEnumerator LoopSpawn()
+    public IEnumerator LoopSpawn()
     {
         var spawned = 0;
         while (spawned < amount)
@@ -54,10 +51,5 @@ public class PathSpawner : MonoBehaviour
         {
             tile.isIrreplaceable = pathCandidates.All(candidate => candidate.path.Contains(tile));
         }
-    }
-
-    private void OnDisable()
-    {
-        StopCoroutine(_spawn);
     }
 }
