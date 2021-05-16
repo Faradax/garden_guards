@@ -27,15 +27,21 @@ public class SelectionUiController : MonoBehaviour
         foreach (TowerSO towerSo in towers)
         {
             int index = i;
-            void ChangePlacedItem()
-            {
-                pointer.placeTower = towerSo;
-                draft.ChangeSelection(index);
-            }
-
-            var button = new Button(ChangePlacedItem) {text = towerSo.name};
+            Button button = BuildCard(towerSo, index);
             list.Add(button);
             i++;
         }
+    }
+    private Button BuildCard(TowerSO towerSo, int index)
+    {
+
+        void ChangePlacedItem()
+        {
+            pointer.placeTower = towerSo;
+            draft.ChangeSelection(index);
+        }
+
+        var button = new Button(ChangePlacedItem) {text = towerSo.name};
+        return button;
     }
 }
