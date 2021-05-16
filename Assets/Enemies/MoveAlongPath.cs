@@ -18,7 +18,7 @@ public class MoveAlongPath : MonoBehaviour
 
     public void SetPath(PathCreator pathCreator)
     {
-        _path = pathCreator.path;   
+        _path = pathCreator.path;
     }
 
     void Update()

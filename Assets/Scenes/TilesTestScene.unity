@@ -255,6 +255,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24598738}
     m_Modifications:
+    - target: {fileID: -4793965990001127515, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450015581550827760, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -310,6 +314,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1450015581550827760, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
   m_PrefabInstance: {fileID: 74637285}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &74637287 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4793965990001127515, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
+  m_PrefabInstance: {fileID: 74637285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8936ef7af7410393a121d9aef08602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &86379503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -360,6 +375,10 @@ PrefabInstance:
     - target: {fileID: 1450015581550827760, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2197615210169862623, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: isPath
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2257620429393756746, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_Name
@@ -677,6 +696,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2197615210169862623, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2257620429393756746, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_Name
       value: GrassTile (4)
@@ -697,7 +720,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 286001898}
+  - component: {fileID: 286001900}
   - component: {fileID: 286001899}
+  - component: {fileID: 286001901}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -734,7 +759,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 289505880547381615, guid: cb3a186f16b595e06a7f5c6494b57e3b, type: 3}
   pathCreator: {fileID: 107801811}
-  seconds: 2
+  allTiles: {fileID: 286001901}
+  seconds: 3
   amount: 20
   done:
     m_PersistentCalls:
@@ -751,6 +777,48 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &286001900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286001896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea5365051fa296bcaa312cdc77ebe65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 428ff250a6997f85b91187713085b77b, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 286001899}
+        m_TargetAssemblyTypeName: PathSpawner, Assembly-CSharp
+        m_MethodName: OnPathsEdited
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &286001901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286001896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07eb44bbb77326f29d50e442c55797a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: {fileID: 74637287}
+  end: {fileID: 587657354}
 --- !u!1001 &319355716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -801,6 +869,10 @@ PrefabInstance:
     - target: {fileID: 1450015581550827760, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2197615210169862623, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: isPath
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2257620429393756746, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_Name
@@ -1212,6 +1284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterTile (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4851217253078672162, guid: 3fd9aec9375a7fe10bc05b3a262ec09d, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd9aec9375a7fe10bc05b3a262ec09d, type: 3}
 --- !u!4 &440146687 stripped
@@ -1303,6 +1379,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2197615210169862623, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2257620429393756746, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_Name
       value: GrassTile (7)
@@ -1365,6 +1445,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2197615210169862623, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2257620429393756746, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_Name
       value: GrassTile (3)
@@ -1376,6 +1460,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1450015581550827760, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
   m_PrefabInstance: {fileID: 587657352}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &587657354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2197615210169862623, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+  m_PrefabInstance: {fileID: 587657352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8936ef7af7410393a121d9aef08602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &604094403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1445,6 +1540,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24598738}
     m_Modifications:
+    - target: {fileID: -4793965990001127515, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450015581550827760, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -1569,6 +1668,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24598738}
     m_Modifications:
+    - target: {fileID: -4793965990001127515, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450015581550827760, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -1785,6 +1888,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24598738}
     m_Modifications:
+    - target: {fileID: -4793965990001127515, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450015581550827760, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -1953,6 +2060,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2197615210169862623, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2257620429393756746, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_Name
       value: GrassTile (10)
@@ -2019,6 +2130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterTile (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4851217253078672162, guid: 3fd9aec9375a7fe10bc05b3a262ec09d, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd9aec9375a7fe10bc05b3a262ec09d, type: 3}
 --- !u!4 &980490661 stripped
@@ -2033,6 +2148,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24598738}
     m_Modifications:
+    - target: {fileID: -4793965990001127515, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450015581550827760, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -2533,6 +2652,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24598738}
     m_Modifications:
+    - target: {fileID: -4793965990001127515, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450015581550827760, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -2705,6 +2828,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterTile
       objectReference: {fileID: 0}
+    - target: {fileID: 4851217253078672162, guid: 3fd9aec9375a7fe10bc05b3a262ec09d, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd9aec9375a7fe10bc05b3a262ec09d, type: 3}
 --- !u!4 &1549139871 stripped
@@ -2719,6 +2846,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24598738}
     m_Modifications:
+    - target: {fileID: -4793965990001127515, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450015581550827760, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -3523,6 +3654,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24598738}
     m_Modifications:
+    - target: {fileID: 311964028358468511, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450015581550827760, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -3567,9 +3702,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2197615210169862623, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: isPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2257620429393756746, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_Name
       value: GrassTile (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8198021587491626105, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f285d4d9187ceffea9e542f34a670060, type: 3}

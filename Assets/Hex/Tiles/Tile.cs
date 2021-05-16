@@ -4,6 +4,7 @@ public class Tile : MonoBehaviour
 {
 
     public TileSO tileSo;
+    public bool isPath;
     public Shader darkShader;
     
     private GameObject _thingOnTop;
@@ -38,6 +39,11 @@ public class Tile : MonoBehaviour
     {
         // TODO: respect Roads, etc
         return !transform.Find("Goal") && towerSo.IsCompatible(this);
+    }
+
+    public bool IsPath()
+    {
+        return isPath;
     }
 
     public void SpawnTower(TowerSO towerSo)
