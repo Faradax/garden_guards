@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
   m_Name: GunTower
   m_EditorClassIdentifier: 
-  asset: {fileID: 4106630053610977557, guid: d6e943e4b4d401939a99769318a67e78, type: 3}
+  asset: {fileID: 2257620429393756746, guid: 26ee62324352d75afb48f5ad2b200a44, type: 3}
   compatibleTiles:
   - {fileID: 11400000, guid: ebeadfeca3d0f4bc8a33e46a535b8ed2, type: 2}
   - {fileID: 11400000, guid: 1fd8ef5a989442f9d847bff2ed51cf29, type: 2}
