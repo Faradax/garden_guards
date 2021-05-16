@@ -49,8 +49,8 @@ public class Tile : MonoBehaviour
 
     public void SpawnTower(TowerSO towerSo)
     {
-        GameObject asset = Instantiate(towerSo.asset);
-        asset.transform.position = transform.position;
+        Instantiate(towerSo.asset, transform.position, Quaternion.identity);
+        
         gameObject.SetActive(false);
         Destroy(gameObject);
     }

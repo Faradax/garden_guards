@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -6758278998526267294}
   - component: {fileID: -678181170927561648}
   - component: {fileID: 2197615210169862623}
+  - component: {fileID: 6280496788175142156}
   m_Layer: 0
   m_Name: GrassTile
   m_TagString: Untagged
@@ -202,4 +203,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileSo: {fileID: 11400000, guid: 4aa4a8a9bce2bba89b57026c20c1217b, type: 2}
+  isPath: 0
+  isIrreplaceable: 0
   darkShader: {fileID: -6465566751694194690, guid: 15cbad6f74ee0e88ba2877e69920abfd, type: 3}
+--- !u!114 &6280496788175142156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257620429393756746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553c0311ff1b45c3a3dc4b8210ee2ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.25
+  blar:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0020721476
+      value: 0.49565628
+      inSlope: 1.6625147
+      outSlope: 1.6625147
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.30442333
+      value: 0.9983195
+      inSlope: -0.035854783
+      outSlope: -0.035854783
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.60113525
+      value: 0.85528564
+      inSlope: 0.13196672
+      outSlope: 0.13196672
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7885184
+      value: 0.99507284
+      inSlope: -0.16146687
+      outSlope: -0.16146687
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.84250486
+      value: 0.9373651
+      inSlope: -0.3158744
+      outSlope: -0.3158744
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.97095394
+      value: 0.9935207
+      inSlope: 0.4371815
+      outSlope: 0.4371815
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

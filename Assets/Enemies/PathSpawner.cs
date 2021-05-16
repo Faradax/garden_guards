@@ -41,14 +41,19 @@ public class PathSpawner : MonoBehaviour
     {
         List<PathCandidate> pathCandidates = allTiles.FindPaths();
         pathCandidates.Sort((c1, c2) => c1.Length.CompareTo(c2.Length));
-        foreach (Tile tile in pathCandidates.SelectMany(candidate => candidate.path))
-        {
-            tile.isIrreplaceable = pathCandidates.All(candidate => candidate.path.Contains(tile));
-        }
+        DetermineIrreplaceable(pathCandidates);
         Vector3[] points = pathCandidates.First().path.Select(tile => tile.transform.position).ToArray();
         var pathCreatorBezierPath = new BezierPath(points, false, PathSpace.xz);
         pathCreatorBezierPath.ControlPointMode = BezierPath.ControlMode.Automatic;
         pathCreator.bezierPath = pathCreatorBezierPath;
+    }
+    private static void DetermineIrreplaceable(List<PathCandidate> pathCandidates)
+    {
+
+        foreach (Tile tile in pathCandidates.SelectMany(candidate => candidate.path))
+        {
+            tile.isIrreplaceable = pathCandidates.All(candidate => candidate.path.Contains(tile));
+        }
     }
 
     private void OnDisable()

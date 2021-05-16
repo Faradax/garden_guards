@@ -36,7 +36,7 @@ public class PreviewController : MonoBehaviour
         MonoBehaviour[] behaviours = _preview.GetComponentsInChildren<MonoBehaviour>();
         foreach (MonoBehaviour monoBehaviour in behaviours)
         {
-            Destroy(monoBehaviour);
+            monoBehaviour.enabled = false;
         }
     }
 

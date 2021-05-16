@@ -2618,6 +2618,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6311fab338d6ac63f8ad5e3838e21e14, type: 2}
   - {fileID: 11400000, guid: 3344a9b88905d6051bd44cfa9ab2c6f1, type: 2}
   - {fileID: 11400000, guid: 3344a9b88905d6051bd44cfa9ab2c6f1, type: 2}
+  - {fileID: 11400000, guid: 6311fab338d6ac63f8ad5e3838e21e14, type: 2}
+  - {fileID: 11400000, guid: 6311fab338d6ac63f8ad5e3838e21e14, type: 2}
+  - {fileID: 11400000, guid: 6311fab338d6ac63f8ad5e3838e21e14, type: 2}
+  - {fileID: 11400000, guid: 3344a9b88905d6051bd44cfa9ab2c6f1, type: 2}
+  - {fileID: 11400000, guid: 3344a9b88905d6051bd44cfa9ab2c6f1, type: 2}
+  - {fileID: 11400000, guid: 3344a9b88905d6051bd44cfa9ab2c6f1, type: 2}
   selectionChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3323,6 +3329,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24598738}
     m_Modifications:
+    - target: {fileID: -3230565099224280440, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450015581550827760, guid: f285d4d9187ceffea9e542f34a670060, type: 3}
       propertyPath: m_RootOrder
       value: 18
