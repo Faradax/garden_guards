@@ -5,6 +5,7 @@ public class Tile : MonoBehaviour
 
     public TileSO tileSo;
     public bool isPath;
+    public bool isIrreplaceable;
     public Shader darkShader;
     
     private GameObject _thingOnTop;
@@ -38,7 +39,7 @@ public class Tile : MonoBehaviour
     public bool IsEligible(TowerSO towerSo)
     {
         // TODO: respect Roads, etc
-        return !transform.Find("Goal") && towerSo.IsCompatible(this);
+        return !transform.Find("Goal") && !isIrreplaceable && towerSo.IsCompatible(this);
     }
 
     public bool IsPath()
