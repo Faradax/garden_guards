@@ -3,14 +3,27 @@ using UnityEngine;
 public class PreviewController : MonoBehaviour
 {
     public Material previewMaterial;
-    
+
     private TowerSO _towerSo;
     private GameObject _preview;
-    
+
     public void OnTowerSelected(TowerSO towerSo)
     {
-        _towerSo = towerSo;
+        if (!towerSo)
+        {
+            ResetPreview();
+        }
+        else
+        {
+            PreparePreview(towerSo);
+        }
+
+    }
+    private void PreparePreview(TowerSO towerSo)
+    {
         
+        _towerSo = towerSo;
+
         if (_preview)
         {
             Destroy(_preview);
@@ -19,7 +32,6 @@ public class PreviewController : MonoBehaviour
         _preview.SetActive(false);
         ChangeMaterial();
         StripBehaviours();
-
     }
     private void ChangeMaterial()
     {
@@ -42,13 +54,17 @@ public class PreviewController : MonoBehaviour
 
     public void OnTowerPlaced()
     {
-        if (_preview)
-        {
-            Destroy(_preview);
-            _preview = null;
-        }
+        
+        ResetPreview();
     }
-    
+    private void ResetPreview()
+    {
+
+        if (!_preview) return;
+        Destroy(_preview);
+        _preview = null;
+    }
+
     public void OnTileHovered(Tile tile)
     {
         if (!_preview) return;

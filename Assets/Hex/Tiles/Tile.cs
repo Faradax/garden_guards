@@ -21,7 +21,7 @@ public class Tile : MonoBehaviour
 
     public void OnTowerSelectionChanged(TowerSO towerSo)
     {
-        if (!IsEligible(towerSo))
+        if (towerSo && !IsEligible(towerSo))
         {
             GetComponent<MeshRenderer>().material = _darkerMaterial;
         }

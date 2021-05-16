@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using Enemies;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LevelFlow: MonoBehaviour
+public class LevelFlow : MonoBehaviour
 {
     public PathSpawner spawner;
     public int wavesCount = 3;
@@ -12,6 +11,7 @@ public class LevelFlow: MonoBehaviour
     public Counter enemyCounter;
     public Countdown preparationCountdown;
 
+    public GameEvent newWave;
     public UnityEvent done;
 
     private void Start()
@@ -27,9 +27,10 @@ public class LevelFlow: MonoBehaviour
         }
         done.Invoke();
     }
-    
+
     private IEnumerator RunWave()
     {
+        newWave.Invoke();
         yield return DoPreparationCountdown();
         yield return SpawnEnemies();
         yield return WaitForLastEnemyToDie();

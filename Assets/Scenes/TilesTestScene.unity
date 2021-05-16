@@ -1179,6 +1179,7 @@ MonoBehaviour:
   currentWaveIndex: 0
   enemyCounter: {fileID: 11400000, guid: 96ed2b4383ccff7998f76b455b882747, type: 2}
   preparationCountdown: {fileID: 11400000, guid: 61ca4cafa48ef7627959e9fbb50e3f61, type: 2}
+  newWave: {fileID: 11400000, guid: b2a0c37863ee3d4f1beef25ec0aa7da6, type: 2}
   done:
     m_PersistentCalls:
       m_Calls:
@@ -2536,6 +2537,7 @@ GameObject:
   - component: {fileID: 1573430473}
   - component: {fileID: 1573430475}
   - component: {fileID: 1573430476}
+  - component: {fileID: 1573430477}
   m_Layer: 5
   m_Name: Shop UI
   m_TagString: Untagged
@@ -2643,7 +2645,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b15e0d68e4745e9a8da1dc6e4e51b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: []
+  pool:
+  - {fileID: 11400000, guid: 28258c7bada056fac80dab1db340b065, type: 2}
+  - {fileID: 11400000, guid: 3344a9b88905d6051bd44cfa9ab2c6f1, type: 2}
+  - {fileID: 11400000, guid: 6311fab338d6ac63f8ad5e3838e21e14, type: 2}
+  - {fileID: 11400000, guid: beaa8b1aba92dd583850484e942b9766, type: 2}
   current:
   - {fileID: 11400000, guid: 28258c7bada056fac80dab1db340b065, type: 2}
   - {fileID: 11400000, guid: beaa8b1aba92dd583850484e942b9766, type: 2}
@@ -2681,6 +2687,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TowerEvent, Assembly-CSharp
         m_MethodName: Invoke
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1573430477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573430470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea5365051fa296bcaa312cdc77ebe65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b2a0c37863ee3d4f1beef25ec0aa7da6, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1573430476}
+        m_TargetAssemblyTypeName: Draft, Assembly-CSharp
+        m_MethodName: OnWaveStart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
