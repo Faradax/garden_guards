@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,8 +9,13 @@ public class TileEventListener : MonoBehaviour
 
     public UnityEvent<Tile> action;
     
-    void Start()
+    void OnEnable()
     {
         tileEvent.@event.AddListener(action.Invoke);
+    }
+
+    private void OnDisable()
+    {
+        tileEvent.@event.RemoveListener(action.Invoke);
     }
 }

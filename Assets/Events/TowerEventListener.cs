@@ -8,8 +8,13 @@ public class TowerEventListener : MonoBehaviour
 
     public UnityEvent<TowerSO> action;
     
-    void Start()
+    void OnEnable()
     {
         towerEvent.@event.AddListener(action.Invoke);
+    }
+
+    private void OnDisable()
+    {
+        towerEvent.@event.RemoveListener(action.Invoke);
     }
 }

@@ -8,8 +8,13 @@ public class VoidEventListener : MonoBehaviour
 
     public UnityEvent action;
     
-    void Start()
+    void OnEnable()
     {
         gameEvent.Event.AddListener(action.Invoke);
+    }
+    
+    void OnDisable()
+    {
+        gameEvent.Event.RemoveListener(action.Invoke);
     }
 }
