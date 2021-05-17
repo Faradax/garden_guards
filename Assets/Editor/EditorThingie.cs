@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(GameEvent))]
-public class EditorThingie : Editor
+public class EditorThingie : UnityEditor.Editor
 {
     public override void OnInspectorGUI()
     {
