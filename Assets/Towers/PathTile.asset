@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
   m_Name: PathTile
   m_EditorClassIdentifier: 
+  isLandscape: 1
   asset: {fileID: 2257620429393756746, guid: 0c896e6100b536e71b325a1c73a45e45, type: 3}
-  compatibleTiles:
-  - {fileID: 11400000, guid: 4aa4a8a9bce2bba89b57026c20c1217b, type: 2}
-  - {fileID: 11400000, guid: 1fd8ef5a989442f9d847bff2ed51cf29, type: 2}
-  - {fileID: 11400000, guid: ebeadfeca3d0f4bc8a33e46a535b8ed2, type: 2}
+  upgrades: {fileID: 0}
