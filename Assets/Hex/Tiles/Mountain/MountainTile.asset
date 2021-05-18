@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
   m_Name: MountainTile
   m_EditorClassIdentifier: 
-  isLandscape: 0
-  asset: {fileID: 0}
+  isLandscape: 1
+  asset: {fileID: 2257620429393756746, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
   upgrades: {fileID: 0}

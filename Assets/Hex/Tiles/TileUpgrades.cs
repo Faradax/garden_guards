@@ -10,7 +10,7 @@ public class TileUpgrades : ScriptableObject
     [Serializable]
     public struct Upgrade
     {
-        public TowerSO via;
-        public TowerSO to;
+        public TileSO via;
+        public TileSO to;
     }
 }

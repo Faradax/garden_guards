@@ -4,18 +4,18 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Garden Guards/Tower")]
-public class TowerSO : ScriptableObject
+public class TileSO : ScriptableObject
 {
 
     public bool isLandscape;
     
     public GameObject asset;
     public TileUpgrades upgrades;
-    public bool canUpgradeTo(TowerSO towerSo)
+    public bool canUpgradeTo(TileSO tileSo)
     {
         // TODO: Probably return upgrade later
-        if (towerSo.isLandscape) return true;
+        if (tileSo.isLandscape) return true;
         if (!upgrades) return false;
-        return upgrades.upgrades.Any(it => it.via == towerSo);
+        return upgrades.upgrades.Any(it => it.via == tileSo);
     }
 }

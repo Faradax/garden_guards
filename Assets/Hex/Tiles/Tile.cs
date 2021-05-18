@@ -3,7 +3,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
 
-    public TowerSO tileSo;
+    public TileSO tileSo;
     public bool isPath;
     public bool isIrreplaceable;
     public Shader darkShader;
@@ -19,9 +19,9 @@ public class Tile : MonoBehaviour
         _darkerMaterial.shader = darkShader;
     }
 
-    public void OnTowerSelectionChanged(TowerSO towerSo)
+    public void OnTowerSelectionChanged(TileSO tileSo)
     {
-        if (towerSo && !IsEligible(towerSo))
+        if (tileSo && !IsEligible(tileSo))
         {
             GetComponent<MeshRenderer>().material = _darkerMaterial;
         }
@@ -36,10 +36,10 @@ public class Tile : MonoBehaviour
         GetComponent<MeshRenderer>().material = _originalMaterial;
     }
 
-    public bool IsEligible(TowerSO towerSo)
+    public bool IsEligible(TileSO tileSo)
     {
         // TODO: respect Roads, etc
-        return !transform.Find("Goal") && !isIrreplaceable && tileSo.canUpgradeTo(towerSo);
+        return !transform.Find("Goal") && !isIrreplaceable && this.tileSo.canUpgradeTo(tileSo);
     }
 
     public bool IsPath()
@@ -47,9 +47,9 @@ public class Tile : MonoBehaviour
         return isPath;
     }
 
-    public void SpawnTower(TowerSO towerSo)
+    public void SpawnTower(TileSO tileSo)
     {
-        Instantiate(towerSo.asset, transform.position, Quaternion.identity);
+        Instantiate(tileSo.asset, transform.position, Quaternion.identity);
         
         gameObject.SetActive(false);
         Destroy(gameObject);

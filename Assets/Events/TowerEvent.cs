@@ -4,10 +4,10 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Garden Guards/Tower Event", fileName = "")]
 public class TowerEvent : ScriptableObject
 {
-    public UnityEvent<TowerSO> @event;
+    public UnityEvent<TileSO> @event;
 
-    public void Invoke(TowerSO tower)
+    public void Invoke(TileSO tile)
     {
-        @event.Invoke(tower);
+        @event.Invoke(tile);
     }
 }

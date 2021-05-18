@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfbb089010f49bfb3949210c0e33391, type: 3}
   m_Name: Countdown
   m_EditorClassIdentifier: 
-  initialValue: 50
+  initialValue: 10
   valueChanged:
     m_PersistentCalls:
       m_Calls: []

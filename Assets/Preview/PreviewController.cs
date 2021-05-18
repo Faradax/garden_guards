@@ -4,31 +4,31 @@ public class PreviewController : MonoBehaviour
 {
     public Material previewMaterial;
 
-    private TowerSO _towerSo;
+    private TileSO _tileSo;
     private GameObject _preview;
 
-    public void OnTowerSelected(TowerSO towerSo)
+    public void OnTowerSelected(TileSO tileSo)
     {
-        if (!towerSo)
+        if (!tileSo)
         {
             ResetPreview();
         }
         else
         {
-            PreparePreview(towerSo);
+            PreparePreview(tileSo);
         }
 
     }
-    private void PreparePreview(TowerSO towerSo)
+    private void PreparePreview(TileSO tileSo)
     {
         
-        _towerSo = towerSo;
+        _tileSo = tileSo;
 
         if (_preview)
         {
             Destroy(_preview);
         }
-        _preview = Instantiate(towerSo.asset);
+        _preview = Instantiate(tileSo.asset);
         _preview.SetActive(false);
         ChangeMaterial();
         StripBehaviours();
@@ -68,7 +68,7 @@ public class PreviewController : MonoBehaviour
     public void OnTileHovered(Tile tile)
     {
         if (!_preview) return;
-        if (tile && tile.IsEligible(_towerSo))
+        if (tile && tile.IsEligible(_tileSo))
         {
             _preview.SetActive(true);
             _preview.transform.position = tile.transform.position;

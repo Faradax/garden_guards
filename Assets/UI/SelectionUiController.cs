@@ -17,14 +17,14 @@ public class SelectionUiController : MonoBehaviour
     }
     private void OnDraftRefresh()
     {
-        IEnumerable<TowerSO> towers = draft.GetItems();
+        IEnumerable<TileSO> towers = draft.GetItems();
 
         VisualElement root = document.rootVisualElement;
         var list = root.Q<VisualElement>("buttonList");
         list.Clear();
         
         var i = 0;
-        foreach (TowerSO towerSo in towers)
+        foreach (TileSO towerSo in towers)
         {
             int index = i;
             Button button = BuildCard(towerSo, index);
@@ -32,16 +32,16 @@ public class SelectionUiController : MonoBehaviour
             i++;
         }
     }
-    private Button BuildCard(TowerSO towerSo, int index)
+    private Button BuildCard(TileSO tileSo, int index)
     {
 
         void ChangePlacedItem()
         {
-            pointer.placeTower = towerSo;
+            pointer.placeTile = tileSo;
             draft.ChangeSelection(index);
         }
 
-        var button = new Button(ChangePlacedItem) {text = towerSo.name};
+        var button = new Button(ChangePlacedItem) {text = tileSo.name};
         return button;
     }
 }

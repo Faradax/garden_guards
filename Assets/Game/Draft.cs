@@ -7,14 +7,14 @@ using Random = System.Random;
 public class Draft: MonoBehaviour
 {
 
-    public List<TowerSO> pool;
-    public List<TowerSO> current;
+    public List<TileSO> pool;
+    public List<TileSO> current;
     private bool _selectionMade;
     private int _index;
 
     public event Action draftRefresh;
-    public UnityEvent<TowerSO> selectionChanged;
-    public UnityEvent<TowerSO> towerPlaced;
+    public UnityEvent<TileSO> selectionChanged;
+    public UnityEvent<TileSO> towerPlaced;
 
     private readonly Random _random = new();
 
@@ -29,7 +29,7 @@ public class Draft: MonoBehaviour
         }
         draftRefresh?.Invoke();
     }
-    private TowerSO RandomFromPool()
+    private TileSO RandomFromPool()
     {
         int max = pool.Count;
         int randomIndex = _random.Next(max);
@@ -43,17 +43,17 @@ public class Draft: MonoBehaviour
         var tile = target.GetComponent<Tile>();
         if (!tile) return;
 
-        TowerSO towerSo = current[_index];
-        if (!tile.IsEligible(towerSo)) return;
+        TileSO tileSo = current[_index];
+        if (!tile.IsEligible(tileSo)) return;
         
-        tile.SpawnTower(towerSo);
+        tile.SpawnTower(tileSo);
         current.RemoveAt(_index);
         _selectionMade = false;
-        towerPlaced.Invoke(towerSo);
+        towerPlaced.Invoke(tileSo);
         draftRefresh?.Invoke();
     }
 
-    public IEnumerable<TowerSO> GetItems()
+    public IEnumerable<TileSO> GetItems()
     {
         return current;
     }

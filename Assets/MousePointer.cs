@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Camera))]
 public class MousePointer : MonoBehaviour
 {
-    public TowerSO placeTower;
+    public TileSO placeTile;
     public Texture2D pointerTexture; 
     
     private Camera _camera;

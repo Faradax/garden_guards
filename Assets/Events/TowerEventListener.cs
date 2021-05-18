@@ -6,7 +6,7 @@ public class TowerEventListener : MonoBehaviour
     
     public TowerEvent towerEvent;
 
-    public UnityEvent<TowerSO> action;
+    public UnityEvent<TileSO> action;
     
     void OnEnable()
     {
