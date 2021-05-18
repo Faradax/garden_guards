@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8936ef7af7410393a121d9aef08602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileSo: {fileID: 11400000, guid: 4729979006e27df9ab9bdf352647b5ce, type: 2}
+  tileSo: {fileID: 11400000, guid: 6311fab338d6ac63f8ad5e3838e21e14, type: 2}
   isPath: 1
   isIrreplaceable: 0
   darkShader: {fileID: -6465566751694194690, guid: 15cbad6f74ee0e88ba2877e69920abfd, type: 3}

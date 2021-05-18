@@ -3,7 +3,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
 
-    public TileSO tileSo;
+    public TowerSO tileSo;
     public bool isPath;
     public bool isIrreplaceable;
     public Shader darkShader;
@@ -39,7 +39,7 @@ public class Tile : MonoBehaviour
     public bool IsEligible(TowerSO towerSo)
     {
         // TODO: respect Roads, etc
-        return !transform.Find("Goal") && !isIrreplaceable && towerSo.IsCompatible(this);
+        return !transform.Find("Goal") && !isIrreplaceable && tileSo.canUpgradeTo(towerSo);
     }
 
     public bool IsPath()
