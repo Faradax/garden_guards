@@ -10,12 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e38d82468400ea66793d74e01a4a2c9b, type: 3}
-  m_Name: GrassTileUpgrades
+  m_Name: MushroomUpgrades
   m_EditorClassIdentifier: 
   upgrades:
-  - via: {fileID: 11400000, guid: 28258c7bada056fac80dab1db340b065, type: 2}
-    to: {fileID: 0}
-  - via: {fileID: 11400000, guid: beaa8b1aba92dd583850484e942b9766, type: 2}
-    to: {fileID: 0}
   - via: {fileID: 11400000, guid: f8860c65c13d337a99768ff907b078ff, type: 2}
-    to: {fileID: 0}
+    to: {fileID: 11400000, guid: e98cc803ecce52f918be8a931a41fa50, type: 2}

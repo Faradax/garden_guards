@@ -19,9 +19,9 @@ public class Tile : MonoBehaviour
         _darkerMaterial.shader = darkShader;
     }
 
-    public void OnTowerSelectionChanged(TileSO tileSo)
+    public void OnTowerSelectionChanged(TileSO newTileSo)
     {
-        if (tileSo && !IsEligible(tileSo))
+        if (newTileSo && !IsEligible(newTileSo))
         {
             GetComponent<MeshRenderer>().material = _darkerMaterial;
         }
@@ -36,10 +36,10 @@ public class Tile : MonoBehaviour
         GetComponent<MeshRenderer>().material = _originalMaterial;
     }
 
-    public bool IsEligible(TileSO tileSo)
+    public bool IsEligible(TileSO newTileSo)
     {
         // TODO: respect Roads, etc
-        return !transform.Find("Goal") && !isIrreplaceable && this.tileSo.canUpgradeTo(tileSo);
+        return !transform.Find("Goal") && !isIrreplaceable && tileSo.canUpgradeTo(newTileSo);
     }
 
     public bool IsPath()
@@ -47,9 +47,10 @@ public class Tile : MonoBehaviour
         return isPath;
     }
 
-    public void SpawnTower(TileSO tileSo)
+    public void SpawnTower(TileSO newTileSo)
     {
-        Instantiate(tileSo.asset, transform.position, Quaternion.identity);
+        TileSO upgradeResult = tileSo.GetUpgradeFor(newTileSo);
+        Instantiate(upgradeResult.asset, transform.position, Quaternion.identity);
         
         gameObject.SetActive(false);
         Destroy(gameObject);

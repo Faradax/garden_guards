@@ -18,4 +18,12 @@ public class TileSO : ScriptableObject
         if (!upgrades) return false;
         return upgrades.upgrades.Any(it => it.via == tileSo);
     }
+    public TileSO GetUpgradeFor(TileSO tileSo)
+    {
+        if (!upgrades) return null;
+        TileUpgrades.Upgrade foundUpgrade = upgrades.upgrades.Where(it => it.via == tileSo).FirstOrDefault();
+        TileSO upgradeTo = foundUpgrade.to;
+        if (!upgradeTo) return tileSo;
+        return upgradeTo;
+    }
 }
