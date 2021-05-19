@@ -5,19 +5,20 @@ using UnityEngine;
 public class GunTower : MonoBehaviour
 {
     public GameObject projectileEffect;
-    private float cooldown = 0.2f;
+    public float cooldown = 0.2f;
+    private float _currentCooldown;
     private Transform _target;
     public float radius = 2;
 
     public void Update()
     {
         SearchForEnemy();
-        cooldown = Mathf.Max(cooldown - Time.deltaTime, 0);
+        _currentCooldown = Mathf.Max(_currentCooldown - Time.deltaTime, 0);
 
-        if (cooldown == 0 && _target)
+        if (_currentCooldown == 0 && _target)
         {
             Fire();
-            cooldown = 0.2f;
+            _currentCooldown = cooldown;
         }
     }
     private void Fire()
