@@ -51,8 +51,20 @@ public class Tile : MonoBehaviour
     {
         TileSO upgradeResult = tileSo.GetUpgradeFor(newTileSo);
         Instantiate(upgradeResult.asset, transform.position, Quaternion.identity);
+
+        if (newTileSo.name == "VoidTile")
+        {
+            Drop();
+            return;
+        }
         
         gameObject.SetActive(false);
         Destroy(gameObject);
+    }
+    private void Drop()
+    {
+        var rigidbody = gameObject.AddComponent<Rigidbody>();
+        rigidbody.AddForceAtPosition(Vector3.up * 2, Vector3.forward);
+        rigidbody.drag = .7f;
     }
 }

@@ -7,21 +7,21 @@ using UnityEngine;
 public class TileSO : ScriptableObject
 {
 
-    public bool isLandscape;
+    public bool placeAnywhere;
     
     public GameObject asset;
     public TileUpgrades upgrades;
     public bool canUpgradeTo(TileSO tileSo)
     {
         // TODO: Probably return upgrade later
-        if (tileSo.isLandscape) return true;
+        if (tileSo.placeAnywhere) return true;
         if (!upgrades) return false;
         return upgrades.upgrades.Any(it => it.via == tileSo);
     }
     public TileSO GetUpgradeFor(TileSO tileSo)
     {
-        if (!upgrades) return null;
-        TileUpgrades.Upgrade foundUpgrade = upgrades.upgrades.Where(it => it.via == tileSo).FirstOrDefault();
+        if (!upgrades) return tileSo;
+        TileUpgrades.Upgrade foundUpgrade = upgrades.upgrades.FirstOrDefault(it => it.via == tileSo);
         TileSO upgradeTo = foundUpgrade.to;
         if (!upgradeTo) return tileSo;
         return upgradeTo;

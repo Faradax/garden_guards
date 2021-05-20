@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
-  m_Name: PathTile
+  m_Name: VoidTile
   m_EditorClassIdentifier: 
   placeAnywhere: 1
-  asset: {fileID: 2257620429393756746, guid: 0c896e6100b536e71b325a1c73a45e45, type: 3}
-  upgrades: {fileID: 0}
+  asset: {fileID: 2257620429393756746, guid: e9b95bacff6ef09498351f1941525aca, type: 3}
+  upgrades: {fileID: 11400000, guid: 8647e52ba5cec1d90a89c984ae5bcfe7, type: 2}
