@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
-  m_Name: ForestTile
+  m_Name: ArrowTowerTile
   m_EditorClassIdentifier: 
   placeAnywhere: 0
-  asset: {fileID: 2257620429393756746, guid: 65655eed33e7da6ab8e83c016341e7e8, type: 3}
-  upgrades: {fileID: 11400000, guid: a644a8989c724a47d94603ffbda4ffd1, type: 2}
+  asset: {fileID: 2257620429393756746, guid: 98b9d17981441aaf68aa0f8d9a3fd1fb, type: 3}
+  upgrades: {fileID: 0}

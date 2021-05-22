@@ -1,4 +1,29 @@
-﻿Level
+﻿Landschaften:
+Wiese
+Wald
+Berg
+Sumpf
+Feld
+Wasser
+
+Summons:
+Turm - typischerweise Rundum, AOE
+Belagerungswaffe - gerichtet, einzelne Gegner
+Animus - Roaming
+Obelisk - Debuffs
+(Schrein - Turm-Buffs?)
+(Spender-Turm - Consumables?)
+
+
+Landschaft + Summon = "Turm/Einheit"
+
+Aktionen:
+Entfernen
+Ausschneiden
+
+-------------------8<-------------------------
+
+Level
   Show Enemies
   Set up "Cards"
   Waves
