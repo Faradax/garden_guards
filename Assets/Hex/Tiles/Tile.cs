@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Tile : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Tile : MonoBehaviour
     public bool isPath;
     public bool isIrreplaceable;
     public Shader darkShader;
+
+    public UnityEvent tilePlaced;
+    public UnityEvent tileRemoved;
     
     private GameObject _thingOnTop;
     private Material _originalMaterial;
@@ -50,7 +54,10 @@ public class Tile : MonoBehaviour
     public void SpawnTower(TileSO newTileSo)
     {
         TileSO upgradeResult = tileSo.GetUpgradeFor(newTileSo);
-        Instantiate(upgradeResult.asset, transform.position, Quaternion.identity);
+        GameObject newTile = Instantiate(upgradeResult.asset, transform.position, Quaternion.identity);
+        
+        newTile.GetComponent<Tile>()?.tilePlaced.Invoke();
+        tileRemoved.Invoke();
 
         if (newTileSo.name == "VoidTile")
         {

@@ -17,13 +17,14 @@ public class Draft: MonoBehaviour
     public UnityEvent<TileSO> towerPlaced;
 
     private readonly Random _random = new();
+    public int draw = 7;
 
     public void OnWaveStart()
     {
         selectionChanged.Invoke(null);
         _selectionMade = false;
         current.Clear();
-        for (var i = 0; i < 7; i++)
+        for (var i = 0; i < draw; i++)
         {
             current.Add(RandomFromPool());
         }

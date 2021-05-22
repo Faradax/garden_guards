@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -678181170927561648}
   - component: {fileID: 2197615210169862623}
   - component: {fileID: 6280496788175142156}
+  - component: {fileID: 4023809430209487495}
   m_Layer: 0
   m_Name: CannonTowerTile
   m_TagString: Untagged
@@ -207,6 +208,12 @@ MonoBehaviour:
   isPath: 0
   isIrreplaceable: 0
   darkShader: {fileID: -6465566751694194690, guid: 15cbad6f74ee0e88ba2877e69920abfd, type: 3}
+  tilePlaced:
+    m_PersistentCalls:
+      m_Calls: []
+  tileRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6280496788175142156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +287,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4023809430209487495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257620429393756746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676e70d2943ff1ccfb4ab7157df48cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6026468958158579610
 PrefabInstance:
   m_ObjectHideFlags: 0

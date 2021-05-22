@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: -678181170927561648}
   - component: {fileID: 2197615210169862623}
   - component: {fileID: 6280496788175142156}
+  - component: {fileID: 3167735274842385915}
+  - component: {fileID: -5826452605154478990}
   m_Layer: 0
   m_Name: ObeliskTile
   m_TagString: Untagged
@@ -207,6 +209,12 @@ MonoBehaviour:
   isPath: 0
   isIrreplaceable: 0
   darkShader: {fileID: -6465566751694194690, guid: 15cbad6f74ee0e88ba2877e69920abfd, type: 3}
+  tilePlaced:
+    m_PersistentCalls:
+      m_Calls: []
+  tileRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6280496788175142156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +288,47 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3167735274842385915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257620429393756746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceac3c7a70dfeb14fa70a3f745319de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
+--- !u!114 &-5826452605154478990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257620429393756746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4621c954edbd4c4f933494ff71f3a37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerEvent: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3167735274842385915}
+        m_TargetAssemblyTypeName: Aura, Assembly-CSharp
+        m_MethodName: UpdateBuffs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &8826739648664613286
 PrefabInstance:
   m_ObjectHideFlags: 0
