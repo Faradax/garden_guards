@@ -58,7 +58,9 @@ public class Tile : MonoBehaviour
         
         newTile.GetComponent<Tile>()?.tilePlaced.Invoke();
         tileRemoved.Invoke();
-
+        
+        isPath = false;
+        
         if (newTileSo.name == "VoidTile")
         {
             Drop();
