@@ -1,5 +1,4 @@
 using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour
@@ -9,7 +8,7 @@ public class Bomb : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        Instantiate(explosion, transform.position, quaternion.identity);
+        Instantiate(explosion, transform.position, Quaternion.identity);
         DoDamage();
         Destroy(gameObject);
     }
