@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Editor.FieldEditor;
+using Hex;
 using UnityEditor;
 using UnityEditor.EditorTools;
 using UnityEditor.Overlays;
@@ -52,6 +53,7 @@ class FieldTool : EditorTool, IDrawSelectedHandles
     // Equivalent to Editor.OnSceneGUI.
     public override void OnToolGUI(EditorWindow window)
     {
+        var hexMap = (HexMap) target;
         Event current = Event.current;
         if (current.type == EventType.MouseDown && current.button == 0)
         {
@@ -67,13 +69,8 @@ class FieldTool : EditorTool, IDrawSelectedHandles
                 Debug.Log("Now spawning" + selection);
 
 
-                Vector2 axialCoords = HexMap.WorldToAxial(worldClick);
-                Vector3 cube = HexMap.AxialToCube(axialCoords);
-                Vector3 cubeRound = HexMap.CubeRound(cube);
-                Vector2 axialRound = HexMap.CubeToAxial(cubeRound);
-                Vector2 units = HexMap.AxialToWorld(axialRound);
-
-                Instantiate(selection.asset, new Vector3(units.x, 0, units.y), Quaternion.identity);
+                AxialHexCoords clickedHexCoords = AxialHexCoords.FromXZ(worldClick.x, worldClick.z);
+                hexMap.SetHexTile(clickedHexCoords, selection);
             }
         }
         // Don't allow clicking over empty space to deselect the object
