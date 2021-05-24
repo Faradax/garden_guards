@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour
 
     public UnityEvent tilePlaced;
     public UnityEvent tileRemoved;
-    
+
     private GameObject _thingOnTop;
     private Material _originalMaterial;
     private Material _darkerMaterial;
@@ -55,18 +55,18 @@ public class Tile : MonoBehaviour
     {
         TileSO upgradeResult = tileSo.GetUpgradeFor(newTileSo);
         GameObject newTile = Instantiate(upgradeResult.asset, transform.position, Quaternion.identity);
-        
+
         newTile.GetComponent<Tile>()?.tilePlaced.Invoke();
         tileRemoved.Invoke();
-        
+
         isPath = false;
-        
+
         if (newTileSo.name == "VoidTile")
         {
             Drop();
             return;
         }
-        
+
         gameObject.SetActive(false);
         Destroy(gameObject);
     }

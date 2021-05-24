@@ -1,19 +1,17 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Editor.FieldEditor;
 using UnityEditor;
-using UnityEditor.Overlays;
-using UnityEngine.UIElements;
-using UnityEditor;
 using UnityEditor.EditorTools;
+using UnityEditor.Overlays;
 using UnityEditor.ShortcutManagement;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 // The second argument in the EditorToolAttribute flags this as a Component tool. That means that it will be instantiated
 // and destroyed along with the selection. EditorTool.targets will contain the selected objects matching the type.
-[EditorTool("Field Tool", componentToolTarget: typeof(Field))]
+[EditorTool("Field Tool", componentToolTarget: typeof(HexMap))]
 class FieldTool : EditorTool, IDrawSelectedHandles
 {
     // Global tools (tools that do not specify a target type in the attribute) are lazy initialized and persisted by
@@ -32,7 +30,7 @@ class FieldTool : EditorTool, IDrawSelectedHandles
     [Shortcut("Activate Field Tool", typeof(SceneView), KeyCode.P, ShortcutModifiers.Alt)]
     static void FieldToolShortcut()
     {
-        if (Selection.GetFiltered<Field>(SelectionMode.TopLevel).Length > 0)
+        if (Selection.GetFiltered<HexMap>(SelectionMode.TopLevel).Length > 0)
             ToolManager.SetActiveTool<FieldTool>();
     }
 
@@ -62,20 +60,18 @@ class FieldTool : EditorTool, IDrawSelectedHandles
 
             Ray ray = HandleUtility.GUIPointToWorldRay(current.mousePosition);
             var plane = new Plane(Vector3.up, Vector3.zero);
-            float distance;
-            bool raycast = plane.Raycast(ray, out distance);
+            bool raycast = plane.Raycast(ray, out float distance);
             if (raycast)
             {
-                Vector3 vector3 = ray.GetPoint(distance);
+                Vector3 worldClick = ray.GetPoint(distance);
                 Debug.Log("Now spawning" + selection);
 
 
-                var q = (Mathf.Sqrt(3) / 3 * vector3.x - 1f / 3 * vector3.z) / 1;
-                var r = (2f / 3 * vector3.z) / 1;
-                Vector3 cube = axial_to_cube(new Vector2(q, r));
-                Vector3 cubeRound = cube_round(cube);
-                Vector2 axialRound = cube_to_axial(cubeRound);
-                Vector2 units = HexToPixel(axialRound);
+                Vector2 axialCoords = HexMap.WorldToAxial(worldClick);
+                Vector3 cube = HexMap.AxialToCube(axialCoords);
+                Vector3 cubeRound = HexMap.CubeRound(cube);
+                Vector2 axialRound = HexMap.CubeToAxial(cubeRound);
+                Vector2 units = HexMap.AxialToWorld(axialRound);
 
                 Instantiate(selection.asset, new Vector3(units.x, 0, units.y), Quaternion.identity);
             }
@@ -89,55 +85,6 @@ class FieldTool : EditorTool, IDrawSelectedHandles
 
     public void OnDrawHandles()
     {
-    }
-
-    private Vector3 cube_round(Vector3 cube)
-    {
-        var rx = Mathf.Round(cube.x);
-        var ry = Mathf.Round(cube.y);
-        var rz = Mathf.Round(cube.z);
-
-        var x_diff = Mathf.Abs(rx - cube.x);
-        var y_diff = Mathf.Abs(ry - cube.y);
-        var z_diff = Mathf.Abs(rz - cube.z);
-
-        if (x_diff > y_diff && x_diff > z_diff)
-        {
-            rx = -ry - rz;
-        }
-        else if (y_diff > z_diff)
-        {
-            ry = -rx - rz;
-        }
-        else
-        {
-            rz = -rx - ry;
-        }
-
-        return new(rx, ry, rz);
-    }
-
-    private Vector2 HexToPixel(Vector2 hex)
-    {
-        var x = 1 * (Mathf.Sqrt(3) * hex.x + Mathf.Sqrt(3) / 2 * hex.y);
-        var y = 1 * (3f / 2 * hex.y);
-        return new Vector2(x, y);
-    }
-
-    private Vector2 cube_to_axial(Vector3 cube)
-    {
-        var q = cube.x;
-        var r = cube.z;
-        return new Vector2(q, r);
-    }
-
-    private Vector3 axial_to_cube(Vector2 hex)
-    {
-        var x = hex.x;
-        var z = hex.y;
-
-        var y = -x - z;
-        return new Vector3(x, y, z);
     }
 }
 
