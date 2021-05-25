@@ -6,8 +6,15 @@ using UnityEngine;
 namespace Hex
 {
 [Serializable]
-public record AxialHexCoords(int Q, int R)
+public class AxialHexCoords
 {
+    public int Q;
+    public int R;
+    public AxialHexCoords(int q, int r)
+    {
+        Q = q;
+        R = r;
+    }
     public static AxialHexCoords operator +(AxialHexCoords a) => a;
     public static AxialHexCoords operator -(AxialHexCoords a) => new(-a.Q, -a.R);
     
@@ -86,6 +93,25 @@ public record AxialHexCoords(int Q, int R)
             new(-1, 0), new(-1, +1), new(0, +1)
         };
         return axialDirections.Select(offset => this + offset).ToList();
+    }
+
+    protected bool Equals(AxialHexCoords other)
+    {
+        return Q == other.Q && R == other.R;
+    }
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((AxialHexCoords) obj);
+    }
+    public override int GetHashCode()
+    {
+        unchecked
+        {
+            return (Q * 397) ^ R;
+        }
     }
 }
 }

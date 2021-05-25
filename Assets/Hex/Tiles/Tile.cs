@@ -76,4 +76,9 @@ public class Tile : MonoBehaviour
         rigidbody.AddForceAtPosition(Vector3.up * 2, Vector3.forward);
         rigidbody.drag = .7f;
     }
+
+    public bool isEmpty()
+    {
+        return tileSo.asset.name == "VoidTile";
+    }
 }

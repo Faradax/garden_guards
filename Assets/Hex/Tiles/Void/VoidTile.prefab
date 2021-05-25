@@ -206,6 +206,12 @@ MonoBehaviour:
   isPath: 0
   isIrreplaceable: 0
   darkShader: {fileID: -6465566751694194690, guid: 15cbad6f74ee0e88ba2877e69920abfd, type: 3}
+  tilePlaced:
+    m_PersistentCalls:
+      m_Calls: []
+  tileRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6280496788175142156
 MonoBehaviour:
   m_ObjectHideFlags: 0

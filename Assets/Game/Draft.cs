@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Hex;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = System.Random;
@@ -19,6 +20,9 @@ public class Draft: MonoBehaviour
     private readonly Random _random = new();
     public int draw = 7;
 
+    // TODO: DEFINITELY get this out of here
+    public HexMap hexMap;
+    
     public void OnWaveStart()
     {
         selectionChanged.Invoke(null);
@@ -47,7 +51,9 @@ public class Draft: MonoBehaviour
         TileSO tileSo = current[_index];
         if (!tile.IsEligible(tileSo)) return;
         
-        tile.SpawnTower(tileSo);
+        //tile.SpawnTower(tileSo);
+        Vector3 transformPosition = target.transform.position;
+        hexMap.SetHexTile(AxialHexCoords.FromXZ(transformPosition.x, transformPosition.z), tileSo);
         current.RemoveAt(_index);
         _selectionMade = false;
         towerPlaced.Invoke(tileSo);
