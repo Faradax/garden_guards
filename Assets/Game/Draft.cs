@@ -11,18 +11,16 @@ public class Draft: MonoBehaviour
     public List<TileSO> pool;
     public List<TileSO> current;
     private bool _selectionMade;
-    private int _index;
 
     public event Action draftRefresh;
     public UnityEvent<TileSO> selectionChanged;
-    public UnityEvent<TileSO> towerPlaced;
 
     private readonly Random _random = new();
     public int draw = 7;
 
-    // TODO: DEFINITELY get this out of here
-    public HexMap hexMap;
-    
+    public PlaceNewTileFlow placeNewTileFlow;
+    private int _index;
+
     public void OnWaveStart()
     {
         selectionChanged.Invoke(null);
@@ -41,25 +39,6 @@ public class Draft: MonoBehaviour
         return pool[randomIndex];
     }
 
-    public void OnClickableSelected(Clickable target)
-    {
-        if (!_selectionMade) return;
-
-        var tile = target.GetComponent<Tile>();
-        if (!tile) return;
-
-        TileSO tileSo = current[_index];
-        if (!tile.IsEligible(tileSo)) return;
-        
-        //tile.SpawnTower(tileSo);
-        Vector3 transformPosition = target.transform.position;
-        hexMap.SetHexTile(AxialHexCoords.FromXZ(transformPosition.x, transformPosition.z), tileSo);
-        current.RemoveAt(_index);
-        _selectionMade = false;
-        towerPlaced.Invoke(tileSo);
-        draftRefresh?.Invoke();
-    }
-
     public IEnumerable<TileSO> GetItems()
     {
         return current;
@@ -67,8 +46,39 @@ public class Draft: MonoBehaviour
 
     public void ChangeSelection(int index)
     {
-        _selectionMade = true;
+        if (index == _index)
+        {
+            ClearSelection();
+        }
+        else
+        {
+            UpdateSelection(index);
+        }
+    }
+    private void UpdateSelection(int index)
+    {
+
         _index = index;
+        _selectionMade = true;
         selectionChanged.Invoke(current[index]);
+        placeNewTileFlow.PlaceTile(current[index]);
+    }
+
+    public void OnTowerPlaced()
+    {
+        current.RemoveAt(_index);
+        _index = -1;
+        _selectionMade = false;
+        draftRefresh?.Invoke();
+        selectionChanged.Invoke(null);
+    }
+    
+    private void ClearSelection()
+    {
+
+        _index = -1;
+        _selectionMade = false;
+        selectionChanged.Invoke(null);
+        placeNewTileFlow.Abort();
     }
 }

@@ -30,25 +30,18 @@ public class HexMap : MonoBehaviour
         _voidTileSo = AssetDatabase.LoadAssetAtPath<TileSO>("Assets/Hex/Tiles/Void/VoidTile.asset");
     }
 
-    public void SetHexTile(AxialHexCoords coords, TileSO value)
+    public bool SetHexTile(AxialHexCoords coords, TileSO value)
     {
         Slot oldSlot = slots.FirstOrDefault(it => it.Coords.Equals(coords));
-        if (oldSlot != null)
-        {
-            Destroy(oldSlot.Tile.gameObject);
-            slots.Remove(oldSlot);
-            // Don't actually place new void tiles
-            if (value == _voidTileSo)
-            {
-                UpdateVoidBorder();
-                return;
-            }
-        }
+        
+        if (oldSlot != null) return false;
+        
         Vector3 axialToWorld = coords.ToWorldVector3();
         GameObject newTile = Instantiate(value.asset, axialToWorld, Quaternion.identity);
         var slot = new Slot(coords, newTile.GetComponent<Tile>());
         slots.Add(slot);
         UpdateVoidBorder();
+        return true;
     }
 
     private void Start()

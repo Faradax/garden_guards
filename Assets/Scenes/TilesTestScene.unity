@@ -7553,9 +7553,9 @@ MonoBehaviour:
   unityClickableSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1573430476}
-        m_TargetAssemblyTypeName: Draft, Assembly-CSharp
-        m_MethodName: OnClickableSelected
+      - m_Target: {fileID: 2120649589}
+        m_TargetAssemblyTypeName: Hex.PlaceNewTileFlow, Assembly-CSharp
+        m_MethodName: OnTileClicked
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8006,6 +8006,7 @@ GameObject:
   - component: {fileID: 1573430475}
   - component: {fileID: 1573430476}
   - component: {fileID: 1573430477}
+  - component: {fileID: 1573430478}
   m_Layer: 5
   m_Name: Shop UI
   m_TagString: Untagged
@@ -8139,23 +8140,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  towerPlaced:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
-        m_TargetAssemblyTypeName: TowerEvent, Assembly-CSharp
-        m_MethodName: Invoke
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   draw: 15
-  hexMap: {fileID: 1968420361}
+  placeNewTileFlow: {fileID: 2120649589}
 --- !u!114 &1573430477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8175,6 +8161,34 @@ MonoBehaviour:
       - m_Target: {fileID: 1573430476}
         m_TargetAssemblyTypeName: Draft, Assembly-CSharp
         m_MethodName: OnWaveStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1573430478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573430470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4621c954edbd4c4f933494ff71f3a37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerEvent: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1573430476}
+        m_TargetAssemblyTypeName: Draft, Assembly-CSharp
+        m_MethodName: OnTowerPlaced
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9781,6 +9795,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1968420362}
   m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2120649588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120649590}
+  - component: {fileID: 2120649589}
+  m_Layer: 0
+  m_Name: PlaceNewTileFlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2120649589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120649588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a36ef7c7c0418b8e2d72493ac1005e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hexMap: {fileID: 1968420361}
+  towerPlacedEvent: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
+  active: 0
+--- !u!4 &2120649590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120649588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.30273676, y: 0.12400818, z: -0.63500667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2146494224
 GameObject:

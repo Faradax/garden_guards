@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 311964028358468511}
   - component: {fileID: 379919637155003037}
   - component: {fileID: 4826911507961952353}
-  - component: {fileID: 3816390313671952401}
-  - component: {fileID: -7736701928192080726}
   - component: {fileID: 9076204943595142253}
   - component: {fileID: -4793965990001127515}
   - component: {fileID: 3091976769375679347}
@@ -123,62 +121,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &3816390313671952401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2257620429393756746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4621c954edbd4c4f933494ff71f3a37b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerEvent: {fileID: 11400000, guid: 38adbadd21b411aedb0e03d67516050b, type: 2}
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4793965990001127515}
-        m_TargetAssemblyTypeName: Tile, Assembly-CSharp
-        m_MethodName: OnTowerSelectionChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &-7736701928192080726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2257620429393756746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4621c954edbd4c4f933494ff71f3a37b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerEvent: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4793965990001127515}
-        m_TargetAssemblyTypeName: Tile, Assembly-CSharp
-        m_MethodName: OnTowerPlaced
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &9076204943595142253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +149,12 @@ MonoBehaviour:
   isPath: 0
   isIrreplaceable: 0
   darkShader: {fileID: -6465566751694194690, guid: 15cbad6f74ee0e88ba2877e69920abfd, type: 3}
+  tilePlaced:
+    m_PersistentCalls:
+      m_Calls: []
+  tileRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3091976769375679347
 MonoBehaviour:
   m_ObjectHideFlags: 0

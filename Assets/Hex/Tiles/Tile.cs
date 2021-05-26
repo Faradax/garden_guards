@@ -22,24 +22,7 @@ public class Tile : MonoBehaviour
         _darkerMaterial = new Material(_originalMaterial);
         _darkerMaterial.shader = darkShader;
     }
-
-    public void OnTowerSelectionChanged(TileSO newTileSo)
-    {
-        if (newTileSo && !IsEligible(newTileSo))
-        {
-            GetComponent<MeshRenderer>().material = _darkerMaterial;
-        }
-        else
-        {
-            GetComponent<MeshRenderer>().material = _originalMaterial;
-        }
-    }
-
-    public void OnTowerPlaced()
-    {
-        GetComponent<MeshRenderer>().material = _originalMaterial;
-    }
-
+    
     public bool IsEligible(TileSO newTileSo)
     {
         // TODO: respect Roads, etc
@@ -51,25 +34,6 @@ public class Tile : MonoBehaviour
         return isPath;
     }
 
-    public void SpawnTower(TileSO newTileSo)
-    {
-        TileSO upgradeResult = tileSo.GetUpgradeFor(newTileSo);
-        GameObject newTile = Instantiate(upgradeResult.asset, transform.position, Quaternion.identity);
-
-        newTile.GetComponent<Tile>()?.tilePlaced.Invoke();
-        tileRemoved.Invoke();
-
-        isPath = false;
-
-        if (newTileSo.name == "VoidTile")
-        {
-            Drop();
-            return;
-        }
-
-        gameObject.SetActive(false);
-        Destroy(gameObject);
-    }
     private void Drop()
     {
         var rigidbody = gameObject.AddComponent<Rigidbody>();
