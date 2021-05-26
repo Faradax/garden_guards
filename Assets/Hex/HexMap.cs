@@ -23,6 +23,12 @@ public class HexMap : MonoBehaviour
 
     public List<Slot> slots = new();
     public List<Slot> voids = new();
+    private TileSO _voidTileSo;
+
+    private void OnEnable()
+    {
+        _voidTileSo = AssetDatabase.LoadAssetAtPath<TileSO>("Assets/Hex/Tiles/Void/VoidTile.asset");
+    }
 
     public void SetHexTile(AxialHexCoords coords, TileSO value)
     {
@@ -30,6 +36,13 @@ public class HexMap : MonoBehaviour
         if (oldSlot != null)
         {
             Destroy(oldSlot.Tile.gameObject);
+            slots.Remove(oldSlot);
+            // Don't actually place new void tiles
+            if (value == _voidTileSo)
+            {
+                UpdateVoidBorder();
+                return;
+            }
         }
         Vector3 axialToWorld = coords.ToWorldVector3();
         GameObject newTile = Instantiate(value.asset, axialToWorld, Quaternion.identity);
@@ -44,8 +57,6 @@ public class HexMap : MonoBehaviour
     }
     public void UpdateVoidBorder()
     {
-        Debug.Log("Updating World Border");
-        var voidTileSo = AssetDatabase.LoadAssetAtPath<TileSO>("Assets/Hex/Tiles/Void/VoidTile.asset");
         IEnumerable<AxialHexCoords> axialHexCoordsEnumerable =
             slots.Where(slot => !slot.Tile.isEmpty())
                 .Select(it => it.Coords)
@@ -61,7 +72,7 @@ public class HexMap : MonoBehaviour
         voids.Clear();
         foreach (AxialHexCoords axialHexCoords in axialHexCoordsEnumerable)
         {
-            GameObject newTile = Instantiate(voidTileSo.asset, axialHexCoords.ToWorldVector3(), Quaternion.identity);
+            GameObject newTile = Instantiate(_voidTileSo.asset, axialHexCoords.ToWorldVector3(), Quaternion.identity);
             var slot = new Slot(axialHexCoords, newTile.GetComponent<Tile>());
             voids.Add(slot);
         }
