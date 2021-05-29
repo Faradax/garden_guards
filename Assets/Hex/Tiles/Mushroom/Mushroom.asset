@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
-  isLandscape: 1
+  placeAnywhere: 1
   asset: {fileID: 2257620429393756746, guid: db9f411f0000658f7981ff55a30a1d6f, type: 3}
   upgrades: {fileID: 11400000, guid: b752216eda9b130d3935f8d95807f0b0, type: 2}

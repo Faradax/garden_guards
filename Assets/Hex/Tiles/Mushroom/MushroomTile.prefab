@@ -287,10 +287,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 3044ba09fb5bb83ea8d66b6981380dc7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e8a1ef6a0dfa986febf29f49d37894d3, type: 2}
     - target: {fileID: 919132149155446097, guid: 3044ba09fb5bb83ea8d66b6981380dc7, type: 3}
       propertyPath: m_Name
       value: Mushroom
