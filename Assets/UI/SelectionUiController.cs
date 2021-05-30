@@ -14,6 +14,10 @@ public class SelectionUiController : MonoBehaviour
     {
         draft.draftRefresh += OnDraftRefresh;
         OnDraftRefresh();
+        VisualElement root = document.rootVisualElement;
+        var redrawButton = root.Q<Button>("redraw");
+        redrawButton.clickable.clicked += () => draft.OnWaveStart();
+
     }
     private void OnDraftRefresh()
     {
