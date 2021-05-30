@@ -8,6 +8,8 @@ using UnityEngine;
 public class HexMap : MonoBehaviour
 {
 
+    public static HexMap instance;
+    
     [Serializable]
     public class Slot
     {
@@ -25,23 +27,68 @@ public class HexMap : MonoBehaviour
     public List<Slot> voids = new();
     private TileSO _voidTileSo;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void OnEnable()
     {
         _voidTileSo = AssetDatabase.LoadAssetAtPath<TileSO>("Assets/Hex/Tiles/Void/VoidTile.asset");
     }
 
-    public bool SetHexTile(AxialHexCoords coords, TileSO value)
+    public bool SetHexTile(AxialHexCoords coords, TileSO tileSo)
     {
-        Slot oldSlot = slots.FirstOrDefault(it => it.Coords.Equals(coords));
+        Tile oldSlot = TileAt(coords);
         
         if (oldSlot != null) return false;
         
-        Vector3 axialToWorld = coords.ToWorldVector3();
-        GameObject newTile = Instantiate(value.asset, axialToWorld, Quaternion.identity);
-        var slot = new Slot(coords, newTile.GetComponent<Tile>());
-        slots.Add(slot);
+        PlaceTile(coords, tileSo);
+        NotifyNeighbours(coords);
         UpdateVoidBorder();
         return true;
+    }
+    private void PlaceTile(AxialHexCoords coords, TileSO value)
+    {
+
+        Vector3 axialToWorld = coords.ToWorldVector3();
+        var tile = Instantiate(value.asset, axialToWorld, Quaternion.identity).GetComponent<Tile>();
+        var slot = new Slot(coords, tile);
+        slots.Add(slot);
+        tile.OnNeighboursChanged(coords.Neighbours().Select(TileAt).ToList());
+    }
+    private void NotifyNeighbours(AxialHexCoords coords)
+    {
+        foreach (AxialHexCoords neighbour in coords.Neighbours())
+        {
+            Tile neighbourTile = TileAt(neighbour);
+            neighbourTile?.OnNeighboursChanged(neighbour.Neighbours().Select(TileAt).ToList());
+        }
+    }
+    
+    public void RemoveTile(Tile tile)
+    {
+        Slot old = slots.Find(slot => slot.Tile == tile);
+        Destroy(tile.gameObject);
+        slots.Remove(old);
+        NotifyNeighbours(old.Coords);
+        UpdateVoidBorder();
+    }
+    
+    public void ReplaceTile(Tile tile, TileSO tileSo)
+    {
+        Slot old = slots.Find(slot => slot.Tile == tile);
+        Destroy(tile.gameObject);
+        
+        PlaceTile(old.Coords, tileSo);
+        NotifyNeighbours(old.Coords);
+        UpdateVoidBorder();
+    }
+    
+    private Tile TileAt(AxialHexCoords coords)
+    {
+
+        return slots.FirstOrDefault(it => it.Coords.Equals(coords))?.Tile;
     }
 
     private void Start()

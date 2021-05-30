@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
+  m_Name: RedHotPokersTile
+  m_EditorClassIdentifier: 
+  placeAnywhere: 0
+  asset: {fileID: 2257620429393756746, guid: 68fcb01711255933c8dc390a17e2f6ba, type: 3}
+  upgrades: {fileID: 11400000, guid: 50640309bb0b169ae8d46cc8a5fb0429, type: 2}

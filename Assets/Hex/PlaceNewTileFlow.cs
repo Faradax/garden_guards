@@ -20,7 +20,12 @@ public class PlaceNewTileFlow : MonoBehaviour
 
     public void OnTileClicked(Clickable target)
     {
-        if (!active) return;
+        if (!active)
+        {
+            // TODO: Model interaction state properly 
+            target.GetComponent<Tile>()?.OnClick();
+            return;
+        }
         PlaceTile(target);
     }
     private void PlaceTile(Clickable target)

@@ -1,3 +1,12 @@
+Wie geht Upgrade?
+
+Konstellationsbasiertes Upgrade:
+1. Tiles haben mögliche Upgrade-Bedingungen
+1: Alter
+2: Spezifische Tiles als Nachbar
+
+-------------------8<-------------------------
+
 Tier 0:
 Gras
 Stein
@@ -33,6 +42,11 @@ Tier 2:
 Glocke
 Schlange
 Reiher
+
+
+-------------------8<-------------------------
+Von Andrej:
+Entgegengesetzte, kreuzende Wege?
 
 -------------------8<-------------------------
 
