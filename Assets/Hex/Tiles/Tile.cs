@@ -29,12 +29,6 @@ public class Tile : MonoBehaviour
         _darkerMaterial = new Material(_originalMaterial);
         _darkerMaterial.shader = darkShader;
     }
-    
-    public bool IsEligible(TileSO newTileSo)
-    {
-        // TODO: respect Roads, etc
-        return !transform.Find("Goal") && !isIrreplaceable && tileSo.canUpgradeTo(newTileSo);
-    }
 
     public bool isEmpty()
     {
