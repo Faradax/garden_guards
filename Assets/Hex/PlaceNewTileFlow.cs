@@ -36,11 +36,6 @@ public class PlaceNewTileFlow : MonoBehaviour
 
         if (!placedTile) return;
 
-        foreach (ITileLifecycleAware tileLifecycleAware in placedTile.GetComponents<ITileLifecycleAware>())
-        {
-            tileLifecycleAware.OnTilePlaced();
-        }
-        
         towerPlacedEvent.Invoke(_tileToPlace);
         active = false;
         _tileToPlace = null;

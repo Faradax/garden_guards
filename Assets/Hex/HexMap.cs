@@ -55,7 +55,14 @@ public class HexMap : MonoBehaviour
         var tile = Instantiate(value.asset, axialToWorld, Quaternion.identity).GetComponent<Tile>();
         var slot = new Slot(coords, tile);
         slots.Add(slot);
-        tile.OnNeighboursChanged(coords.Neighbours().Select(TileAt).ToList());
+        
+        List<Tile> neighbours = coords.Neighbours().Select(TileAt).Where(neighbour => neighbour).ToList();
+        tile.OnNeighboursChanged(neighbours);
+        foreach (TileBehaviour tileLifecycleAware in tile.GetComponents<TileBehaviour>())
+        {
+            tileLifecycleAware.OnTilePlaced(neighbours);
+        }
+
         return tile;
     }
     private void NotifyNeighbours(AxialHexCoords coords)

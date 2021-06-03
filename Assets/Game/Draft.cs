@@ -21,17 +21,30 @@ public class Draft: MonoBehaviour
     public PlaceNewTileFlow placeNewTileFlow;
     private int _index;
 
+    public static Draft instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void OnWaveStart()
     {
         selectionChanged.Invoke(null);
         _selectionMade = false;
         current.Clear();
-        for (var i = 0; i < draw; i++)
+        DrawRandom(draw);
+    }
+    public void DrawRandom(int amount)
+    {
+
+        for (var i = 0; i < amount; i++)
         {
             current.Add(RandomFromPool());
         }
         draftRefresh?.Invoke();
     }
+    
     private TileSO RandomFromPool()
     {
         int max = pool.Count;

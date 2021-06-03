@@ -1,13 +1,13 @@
 using System.Collections;
-using JetBrains.Annotations;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlacementAnimation: MonoBehaviour, ITileLifecycleAware
+public class PlacementAnimation: TileBehaviour
 {
     public float duration;
     public AnimationCurve blar;
 
-    public void OnTilePlaced()
+    public override void OnTilePlaced(List<Tile> neighbours)
     {
         StartCoroutine(Animate());
     }
@@ -26,10 +26,5 @@ public class PlacementAnimation: MonoBehaviour, ITileLifecycleAware
         }
         transform.localScale = Vector3.one;
         Destroy(this);
-    }
-    
-    public void OnTileRemoved()
-    {
-        
     }
 }

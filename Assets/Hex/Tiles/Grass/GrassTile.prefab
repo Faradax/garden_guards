@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -678181170927561648}
   - component: {fileID: 2197615210169862623}
   - component: {fileID: 6280496788175142156}
+  - component: {fileID: -4261548876181024123}
   m_Layer: 0
   m_Name: GrassTile
   m_TagString: Untagged
@@ -148,6 +149,7 @@ MonoBehaviour:
   isPath: 0
   isIrreplaceable: 0
   darkShader: {fileID: -6465566751694194690, guid: 15cbad6f74ee0e88ba2877e69920abfd, type: 3}
+  border: {fileID: 0}
   tilePlaced:
     m_PersistentCalls:
       m_Calls: []
@@ -227,3 +229,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4261548876181024123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257620429393756746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fd9ac97466449db21fc419d902d843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredNeighbour: {fileID: 11400000, guid: 6311fab338d6ac63f8ad5e3838e21e14, type: 2}
