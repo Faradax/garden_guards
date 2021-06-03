@@ -3195,7 +3195,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: beaa8b1aba92dd583850484e942b9766, type: 2}
   - {fileID: 11400000, guid: 7f18f0332680e1f5fa5ab55c170aa0bc, type: 2}
   - {fileID: 11400000, guid: 9ea774db826039043926713a86535b24, type: 2}
-  - {fileID: 11400000, guid: 1884c200f814ab629b8f2b70f1eab111, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: f8860c65c13d337a99768ff907b078ff, type: 2}
   - {fileID: 11400000, guid: b5cb4cb3e61c32b24bfc8a0c675d1c25, type: 2}
   - {fileID: 11400000, guid: c7a6b5d0ccef1b1a48646d59661ed20f, type: 2}
@@ -3219,7 +3219,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  draw: 15
+  draw: 5
   placeNewTileFlow: {fileID: 2120649589}
 --- !u!114 &1573430477
 MonoBehaviour:
