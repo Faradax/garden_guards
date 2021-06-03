@@ -2,30 +2,20 @@ using UnityEngine;
 
 namespace Hex
 {
-public class PlaceNewTileFlow : MonoBehaviour
+public class PlaceNewTileFlow : MonoBehaviour, IInteraction
 {
     public HexMap hexMap;
     public TowerEvent towerPlacedEvent;
-
-    [HideInInspector]
-    public bool active;
 
     private TileSO _tileToPlace;
 
     public void PlaceTile(TileSO tileToPlace)
     {
         _tileToPlace = tileToPlace;
-        active = true;
     }
 
     public void OnTileClicked(Clickable target)
     {
-        if (!active)
-        {
-            // TODO: Model interaction state properly 
-            target.GetComponent<Tile>()?.OnClick();
-            return;
-        }
         PlaceTile(target);
     }
     private void PlaceTile(Clickable target)
@@ -37,13 +27,11 @@ public class PlaceNewTileFlow : MonoBehaviour
         if (!placedTile) return;
 
         towerPlacedEvent.Invoke(_tileToPlace);
-        active = false;
         _tileToPlace = null;
     }
 
     public void Abort()
     {
-        active = false;
         _tileToPlace = null;
     }
 }

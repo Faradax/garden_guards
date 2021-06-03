@@ -83,6 +83,18 @@ public class HexMap : MonoBehaviour
         UpdateVoidBorder();
     }
     
+    public bool RemoveTile(AxialHexCoords coords)
+    {
+        Slot old = slots.Find(slot => Equals(slot.Coords, coords));
+        if (old == null) return false;
+        
+        Destroy(old.Tile.gameObject);
+        slots.Remove(old);
+        NotifyNeighbours(old.Coords);
+        UpdateVoidBorder();
+        return true;
+    }
+    
     public void ReplaceTile(Tile tile, TileSO tileSo)
     {
         Slot old = slots.Find(slot => slot.Tile == tile);

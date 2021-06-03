@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game;
 using Hex;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,8 +10,10 @@ public class Draft: MonoBehaviour
 {
 
     public List<TileSO> pool;
+    [HideInInspector]
     public List<TileSO> current;
-    private bool _selectionMade;
+    [HideInInspector]
+    public bool selectionMade;
 
     public event Action draftRefresh;
     public UnityEvent<TileSO> selectionChanged;
@@ -18,7 +21,7 @@ public class Draft: MonoBehaviour
     private readonly Random _random = new();
     public int draw = 7;
 
-    public PlaceNewTileFlow placeNewTileFlow;
+    public InteractionHandler interactionHandler;
     private int _index;
 
     public static Draft instance;
@@ -31,7 +34,7 @@ public class Draft: MonoBehaviour
     public void OnWaveStart()
     {
         selectionChanged.Invoke(null);
-        _selectionMade = false;
+        selectionMade = false;
         current.Clear();
         DrawRandom(draw);
     }
@@ -72,16 +75,24 @@ public class Draft: MonoBehaviour
     {
 
         _index = index;
-        _selectionMade = true;
-        selectionChanged.Invoke(current[index]);
-        placeNewTileFlow.PlaceTile(current[index]);
+        selectionMade = true;
+        TileSO selectedTileSO = current[index];
+        selectionChanged.Invoke(selectedTileSO);
+        if (selectedTileSO.name == "VoidTile")
+        {
+            interactionHandler.StartTileRemoval();
+        }
+        else
+        {
+            interactionHandler.StartTilePlacement(selectedTileSO);
+        }
     }
 
     public void OnTowerPlaced()
     {
         current.RemoveAt(_index);
         _index = -1;
-        _selectionMade = false;
+        selectionMade = false;
         draftRefresh?.Invoke();
         selectionChanged.Invoke(null);
     }
@@ -90,8 +101,8 @@ public class Draft: MonoBehaviour
     {
 
         _index = -1;
-        _selectionMade = false;
+        selectionMade = false;
         selectionChanged.Invoke(null);
-        placeNewTileFlow.Abort();
+        // placeNewTileFlow.Abort();
     }
 }

@@ -2684,8 +2684,8 @@ MonoBehaviour:
   unityClickableSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2120649589}
-        m_TargetAssemblyTypeName: Hex.PlaceNewTileFlow, Assembly-CSharp
+      - m_Target: {fileID: 2120649592}
+        m_TargetAssemblyTypeName: Game.InteractionHandler, Assembly-CSharp
         m_MethodName: OnTileClicked
         m_Mode: 0
         m_Arguments:
@@ -3195,7 +3195,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: beaa8b1aba92dd583850484e942b9766, type: 2}
   - {fileID: 11400000, guid: 7f18f0332680e1f5fa5ab55c170aa0bc, type: 2}
   - {fileID: 11400000, guid: 9ea774db826039043926713a86535b24, type: 2}
-  - {fileID: 0}
   - {fileID: 11400000, guid: f8860c65c13d337a99768ff907b078ff, type: 2}
   - {fileID: 11400000, guid: b5cb4cb3e61c32b24bfc8a0c675d1c25, type: 2}
   - {fileID: 11400000, guid: c7a6b5d0ccef1b1a48646d59661ed20f, type: 2}
@@ -3204,6 +3203,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 554573c35e486c2718d481d7a62aecd1, type: 2}
   - {fileID: 11400000, guid: d357676989b03598c9ab1a1531a86d42, type: 2}
   current: []
+  selectionMade: 0
   selectionChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3220,7 +3220,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   draw: 5
-  placeNewTileFlow: {fileID: 2120649589}
+  interactionHandler: {fileID: 2120649592}
 --- !u!114 &1573430477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4658,6 +4658,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2120649590}
   - component: {fileID: 2120649589}
+  - component: {fileID: 2120649591}
+  - component: {fileID: 2120649592}
   m_Layer: 0
   m_Name: PlaceNewTileFlow
   m_TagString: Untagged
@@ -4679,7 +4681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexMap: {fileID: 1968420361}
   towerPlacedEvent: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
-  active: 0
 --- !u!4 &2120649590
 Transform:
   m_ObjectHideFlags: 0
@@ -4695,3 +4696,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2120649591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120649588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6645d400cdf480f8671a346d76d4fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hexMap: {fileID: 1968420361}
+--- !u!114 &2120649592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120649588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194fc30d89ea403fa7a1b7a9dc295a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
