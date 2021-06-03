@@ -71,7 +71,7 @@ public class Draft: MonoBehaviour
             UpdateSelection(index);
         }
     }
-    private void UpdateSelection(int index)
+    private async void UpdateSelection(int index)
     {
 
         _index = index;
@@ -80,15 +80,15 @@ public class Draft: MonoBehaviour
         selectionChanged.Invoke(selectedTileSO);
         if (selectedTileSO.name == "VoidTile")
         {
-            interactionHandler.StartTileRemoval();
+            interactionHandler.StartTileRemoval(OnTilePlaced);
         }
         else
         {
-            interactionHandler.StartTilePlacement(selectedTileSO);
+            interactionHandler.StartTilePlacement(selectedTileSO, OnTilePlaced);
         }
     }
 
-    public void OnTowerPlaced()
+    public void OnTilePlaced()
     {
         current.RemoveAt(_index);
         _index = -1;

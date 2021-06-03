@@ -6,15 +6,15 @@ public class RemoveTileFlow : MonoBehaviour, IInteraction
 {
     public HexMap hexMap;
 
-    public void OnTileClicked(Clickable target)
+    public bool OnTileClicked(Clickable target)
     {
-        RemoveTile(target);
+        return RemoveTile(target);
     }
-    private void RemoveTile(Clickable target)
+    private bool RemoveTile(Clickable target)
     {
         Vector3 transformPosition = target.transform.position;
         AxialHexCoords axialHexCoords = AxialHexCoords.FromXZ(transformPosition.x, transformPosition.z);
-        hexMap.RemoveTile(axialHexCoords);
+        return hexMap.RemoveTile(axialHexCoords);
     }
 }
 }

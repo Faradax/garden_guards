@@ -14,20 +14,21 @@ public class PlaceNewTileFlow : MonoBehaviour, IInteraction
         _tileToPlace = tileToPlace;
     }
 
-    public void OnTileClicked(Clickable target)
+    public bool OnTileClicked(Clickable target)
     {
-        PlaceTile(target);
+        return PlaceTile(target);
     }
-    private void PlaceTile(Clickable target)
+    private bool PlaceTile(Clickable target)
     {
         Vector3 transformPosition = target.transform.position;
         AxialHexCoords axialHexCoords = AxialHexCoords.FromXZ(transformPosition.x, transformPosition.z);
         Tile placedTile = hexMap.SetHexTile(axialHexCoords, _tileToPlace);
 
-        if (!placedTile) return;
+        if (!placedTile) return false;
 
         towerPlacedEvent.Invoke(_tileToPlace);
         _tileToPlace = null;
+        return true;
     }
 
     public void Abort()

@@ -2,6 +2,6 @@ namespace Hex
 {
 public interface IInteraction
 {
-    void OnTileClicked(Clickable clickable);
+    bool OnTileClicked(Clickable clickable);
 }
 }
