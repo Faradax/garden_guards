@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Hex;
 using UnityEngine;
 
@@ -10,6 +9,7 @@ public class InteractionHandler : MonoBehaviour
 
     private PlaceNewTileFlow placeNewTileFlow;
     private RemoveTileFlow removeTileFlow;
+    private DefaultTileFlow defaultTileFlow;
 
     private IInteraction _interaction;
 
@@ -20,6 +20,7 @@ public class InteractionHandler : MonoBehaviour
         _interaction = null;
         placeNewTileFlow = GetComponent<PlaceNewTileFlow>();
         removeTileFlow = GetComponent<RemoveTileFlow>();
+        defaultTileFlow = GetComponent<DefaultTileFlow>();
     }
 
     public void OnTileClicked(Clickable clickable)
@@ -29,7 +30,7 @@ public class InteractionHandler : MonoBehaviour
         if (success)
         {
             _callback.Invoke();
-            _interaction = null;
+            _interaction = defaultTileFlow;
         }
     }
 
