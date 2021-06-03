@@ -30,13 +30,17 @@ public class PlaceNewTileFlow : MonoBehaviour
     }
     private void PlaceTile(Clickable target)
     {
-
         Vector3 transformPosition = target.transform.position;
         AxialHexCoords axialHexCoords = AxialHexCoords.FromXZ(transformPosition.x, transformPosition.z);
-        bool success = hexMap.SetHexTile(axialHexCoords, _tileToPlace);
+        Tile placedTile = hexMap.SetHexTile(axialHexCoords, _tileToPlace);
 
-        if (!success) return;
+        if (!placedTile) return;
 
+        foreach (ITileLifecycleAware tileLifecycleAware in placedTile.GetComponents<ITileLifecycleAware>())
+        {
+            tileLifecycleAware.OnTilePlaced();
+        }
+        
         towerPlacedEvent.Invoke(_tileToPlace);
         active = false;
         _tileToPlace = null;

@@ -1,15 +1,17 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 
-public class PlacementAnimation: MonoBehaviour
+public class PlacementAnimation: MonoBehaviour, ITileLifecycleAware
 {
     public float duration;
     public AnimationCurve blar;
 
-    private void Start()
+    public void OnTilePlaced()
     {
         StartCoroutine(Animate());
     }
+    
     private IEnumerator Animate()
     {
         var timePassed = 0f;
@@ -24,5 +26,10 @@ public class PlacementAnimation: MonoBehaviour
         }
         transform.localScale = Vector3.one;
         Destroy(this);
+    }
+    
+    public void OnTileRemoved()
+    {
+        
     }
 }

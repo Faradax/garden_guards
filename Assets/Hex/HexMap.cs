@@ -37,18 +37,18 @@ public class HexMap : MonoBehaviour
         _voidTileSo = AssetDatabase.LoadAssetAtPath<TileSO>("Assets/Hex/Tiles/Void/VoidTile.asset");
     }
 
-    public bool SetHexTile(AxialHexCoords coords, TileSO tileSo)
+    public Tile SetHexTile(AxialHexCoords coords, TileSO tileSo)
     {
         Tile oldSlot = TileAt(coords);
         
-        if (oldSlot != null) return false;
-        
-        PlaceTile(coords, tileSo);
+        if (oldSlot != null) return null;
+
+        Tile placedTile = PlaceTile(coords, tileSo);
         NotifyNeighbours(coords);
         UpdateVoidBorder();
-        return true;
+        return placedTile;
     }
-    private void PlaceTile(AxialHexCoords coords, TileSO value)
+    private Tile PlaceTile(AxialHexCoords coords, TileSO value)
     {
 
         Vector3 axialToWorld = coords.ToWorldVector3();
@@ -56,6 +56,7 @@ public class HexMap : MonoBehaviour
         var slot = new Slot(coords, tile);
         slots.Add(slot);
         tile.OnNeighboursChanged(coords.Neighbours().Select(TileAt).ToList());
+        return tile;
     }
     private void NotifyNeighbours(AxialHexCoords coords)
     {
