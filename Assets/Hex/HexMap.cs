@@ -87,8 +87,11 @@ public class HexMap : MonoBehaviour
     {
         Slot old = slots.Find(slot => Equals(slot.Coords, coords));
         if (old == null) return false;
+
+        Tile oldTile = old.Tile;
+        if (oldTile.isIrreplaceable) return false;
         
-        Destroy(old.Tile.gameObject);
+        Destroy(oldTile.gameObject);
         slots.Remove(old);
         NotifyNeighbours(old.Coords);
         UpdateVoidBorder();
