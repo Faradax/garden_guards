@@ -30,9 +30,14 @@ public class InteractionHandler : MonoBehaviour
         if (success)
         {
             _callback?.Invoke();
-            _callback = null;
-            _interaction = defaultTileFlow;
+            Reset();
         }
+    }
+    private void Reset()
+    {
+
+        _callback = null;
+        _interaction = defaultTileFlow;
     }
 
     public void StartTilePlacement(TileSO tileSo, Action callback)
@@ -46,6 +51,10 @@ public class InteractionHandler : MonoBehaviour
     {
         _callback = callback;
         _interaction = removeTileFlow;
+    }
+    public void Abort()
+    {
+        Reset();
     }
 }
 }

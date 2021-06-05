@@ -103,6 +103,6 @@ public class Draft: MonoBehaviour
         _index = -1;
         selectionMade = false;
         selectionChanged.Invoke(null);
-        // placeNewTileFlow.Abort();
+        interactionHandler.Abort();
     }
 }
