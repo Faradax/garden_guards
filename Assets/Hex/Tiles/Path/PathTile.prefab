@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -678181170927561648}
   - component: {fileID: 2197615210169862623}
   - component: {fileID: -7462230443618576305}
+  - component: {fileID: -5160017976058632720}
   m_Layer: 0
   m_Name: PathTile
   m_TagString: Untagged
@@ -148,6 +149,7 @@ MonoBehaviour:
   isPath: 1
   isIrreplaceable: 0
   darkShader: {fileID: -6465566751694194690, guid: 15cbad6f74ee0e88ba2877e69920abfd, type: 3}
+  border: {fileID: 0}
   tilePlaced:
     m_PersistentCalls:
       m_Calls: []
@@ -227,3 +229,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5160017976058632720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257620429393756746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19876ba8c9e64a59b1a6902fd28e8a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathEditedEvent: {fileID: 11400000, guid: 428ff250a6997f85b91187713085b77b, type: 2}
