@@ -29,7 +29,8 @@ public class InteractionHandler : MonoBehaviour
         bool success = _interaction.OnTileClicked(clickable);
         if (success)
         {
-            _callback.Invoke();
+            _callback?.Invoke();
+            _callback = null;
             _interaction = defaultTileFlow;
         }
     }
