@@ -3592,6 +3592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8429adbb553142b6b04ec1bcdc4db574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voidTileSo: {fileID: 11400000, guid: b5cb4cb3e61c32b24bfc8a0c675d1c25, type: 2}
   slots:
   - Coords:
       Q: -4

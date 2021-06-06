@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Hex;
-using UnityEditor;
 using UnityEngine;
 
 public class HexMap : MonoBehaviour
 {
 
     public static HexMap instance;
+    public TileSO voidTileSo;
     
     [Serializable]
     public class Slot
@@ -25,16 +25,10 @@ public class HexMap : MonoBehaviour
 
     public List<Slot> slots = new();
     public List<Slot> voids = new();
-    private TileSO _voidTileSo;
 
     private void Awake()
     {
         instance = this;
-    }
-
-    private void OnEnable()
-    {
-        _voidTileSo = AssetDatabase.LoadAssetAtPath<TileSO>("Assets/Hex/Tiles/Void/VoidTile.asset");
     }
 
     public Tile SetHexTile(AxialHexCoords coords, int angle, TileSO tileSo)
@@ -150,7 +144,7 @@ public class HexMap : MonoBehaviour
         voids.Clear();
         foreach (AxialHexCoords axialHexCoords in axialHexCoordsEnumerable)
         {
-            GameObject newTile = Instantiate(_voidTileSo.asset, axialHexCoords.ToWorldVector3(), Quaternion.identity);
+            GameObject newTile = Instantiate(voidTileSo.asset, axialHexCoords.ToWorldVector3(), Quaternion.identity);
             var slot = new Slot(axialHexCoords, newTile.GetComponent<Tile>());
             voids.Add(slot);
         }
