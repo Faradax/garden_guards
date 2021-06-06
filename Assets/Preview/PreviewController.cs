@@ -6,8 +6,9 @@ public class PreviewController : MonoBehaviour
 
     private TileSO _tileSo;
     private GameObject _preview;
+    private int _angle;
 
-    public void OnTowerSelected(TileSO tileSo)
+    public void Show(TileSO tileSo)
     {
         if (!tileSo)
         {
@@ -52,7 +53,7 @@ public class PreviewController : MonoBehaviour
         }
     }
 
-    public void OnTowerPlaced()
+    public void End()
     {
         
         ResetPreview();
@@ -65,7 +66,7 @@ public class PreviewController : MonoBehaviour
         _preview = null;
     }
 
-    public void OnTileHovered(Tile tile)
+    public void UpdateTarget(Tile tile)
     {
         if (!_preview) return;
         if (tile && tile.tileSo.name == "VoidTile")
@@ -79,4 +80,8 @@ public class PreviewController : MonoBehaviour
         }
     }
 
+    public void UpdateAngle(int angle)
+    {
+        _preview.transform.rotation = Quaternion.Euler(0, angle, 0);
+    }
 }

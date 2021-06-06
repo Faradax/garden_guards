@@ -18,5 +18,9 @@ public class DefaultTileFlow: MonoBehaviour, IInteraction
     public void OnMouseWheel(int diff)
     {
     }
+
+    public void OnTileHovered(Tile tile)
+    {
+    }
 }
 }

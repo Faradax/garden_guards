@@ -34,6 +34,11 @@ public class InteractionHandler : MonoBehaviour
             Reset();
         }
     }
+
+    public void OnTileHovered(Tile tile)
+    {
+        _interaction.OnTileHovered(tile);
+    }
     
     [UsedImplicitly]
     // Event Target for PlayerInput.

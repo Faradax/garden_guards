@@ -1075,9 +1075,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 386507445}
-  - component: {fileID: 386507448}
-  - component: {fileID: 386507449}
-  - component: {fileID: 386507447}
   - component: {fileID: 386507446}
   m_Layer: 0
   m_Name: PreviewDisplay
@@ -1114,90 +1111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previewMaterial: {fileID: 2100000, guid: e280c0c79fbb001db9030b569d3dd5eb, type: 2}
---- !u!114 &386507447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386507444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f50816dc5e137f291c2a2972107769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileEvent: {fileID: 11400000, guid: 5fd613dd05ece5796986315ef32006a5, type: 2}
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 386507446}
-        m_TargetAssemblyTypeName: PreviewController, Assembly-CSharp
-        m_MethodName: OnTileHovered
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &386507448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386507444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4621c954edbd4c4f933494ff71f3a37b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerEvent: {fileID: 11400000, guid: 38adbadd21b411aedb0e03d67516050b, type: 2}
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 386507446}
-        m_TargetAssemblyTypeName: PreviewController, Assembly-CSharp
-        m_MethodName: OnTowerSelected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &386507449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386507444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4621c954edbd4c4f933494ff71f3a37b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerEvent: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 386507446}
-        m_TargetAssemblyTypeName: PreviewController, Assembly-CSharp
-        m_MethodName: OnTowerPlaced
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &396139624
 GameObject:
   m_ObjectHideFlags: 0
@@ -4839,10 +4752,11 @@ GameObject:
   - component: {fileID: 2120649590}
   - component: {fileID: 2120649589}
   - component: {fileID: 2120649591}
-  - component: {fileID: 2120649592}
   - component: {fileID: 2120649593}
+  - component: {fileID: 2120649592}
+  - component: {fileID: 2120649594}
   m_Layer: 0
-  m_Name: PlaceNewTileFlow
+  m_Name: InteractionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4862,6 +4776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexMap: {fileID: 1968420361}
   towerPlacedEvent: {fileID: 11400000, guid: 49224c2c20485a6a6bb72733169fdc60, type: 2}
+  previewController: {fileID: 386507446}
 --- !u!4 &2120649590
 Transform:
   m_ObjectHideFlags: 0
@@ -4914,3 +4829,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f242d6470764af6b78f6023335fe2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2120649594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120649588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f50816dc5e137f291c2a2972107769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEvent: {fileID: 11400000, guid: 5fd613dd05ece5796986315ef32006a5, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2120649592}
+        m_TargetAssemblyTypeName: Game.InteractionHandler, Assembly-CSharp
+        m_MethodName: OnTileHovered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
