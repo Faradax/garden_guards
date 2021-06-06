@@ -1,5 +1,6 @@
 using System;
 using Hex;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,7 +34,9 @@ public class InteractionHandler : MonoBehaviour
             Reset();
         }
     }
-
+    
+    [UsedImplicitly]
+    // Event Target for PlayerInput.
     public void OnMouseWheel(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;
