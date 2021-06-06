@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AllTiles : MonoBehaviour
 {
+    public HexMap hexMap;
     public Tile start;
     public Tile end;
 
@@ -26,7 +27,8 @@ public class AllTiles : MonoBehaviour
                     continue;
                 }
 
-                foreach (Tile neighbour in GetTileNeighbours(pathCandidate.Tip))
+                var tileNeighbours = new HashSet<Tile>(hexMap.TileNeighbours(pathCandidate.Tip));
+                foreach (Tile neighbour in tileNeighbours)
                 {
                     if (!neighbour.isPath) continue;
 

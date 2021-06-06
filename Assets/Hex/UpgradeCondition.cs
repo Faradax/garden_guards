@@ -53,7 +53,7 @@ public class UpgradeCondition : MonoBehaviour
     {
         foreach (Tile upgradeNeighbour in new List<Tile>(upgradeNeighbours))
         {
-            HexMap.instance.RemoveTile(upgradeNeighbour);
+            HexMap.instance.ForceRemoveTile(upgradeNeighbour);
             yield return new WaitForSeconds(0.2f);
         }
         HexMap.instance.ReplaceTile(GetComponent<Tile>(), upgradeTo);

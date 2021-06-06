@@ -66,6 +66,13 @@ public class HexMap : MonoBehaviour
 
         return tile;
     }
+
+    public List<Tile> TileNeighbours(Tile tile)
+    {
+        AxialHexCoords oldCoords = slots.Find(slot => slot.Tile == tile).Coords;
+        return oldCoords.Neighbours().Select(TileAt).Where(it => it != null).ToList();
+    }
+    
     private void NotifyNeighbours(AxialHexCoords coords)
     {
         foreach (AxialHexCoords neighbour in coords.Neighbours())
@@ -75,11 +82,11 @@ public class HexMap : MonoBehaviour
         }
     }
     
-    public void RemoveTile(Tile tile)
+    public void ForceRemoveTile(Tile tile)
     {
         Slot old = slots.Find(slot => slot.Tile == tile);
-        Destroy(tile.gameObject);
         slots.Remove(old);
+        Destroy(tile.gameObject);
         NotifyNeighbours(old.Coords);
         UpdateVoidBorder();
     }
@@ -92,8 +99,14 @@ public class HexMap : MonoBehaviour
         Tile oldTile = old.Tile;
         if (oldTile.isIrreplaceable) return false;
         
-        Destroy(oldTile.gameObject);
         slots.Remove(old);
+        
+        foreach (TileBehaviour tileLifecycleAware in oldTile.GetComponents<TileBehaviour>())
+        {
+            tileLifecycleAware.OnTileRemoved();
+        }
+        
+        Destroy(oldTile.gameObject);
         NotifyNeighbours(old.Coords);
         UpdateVoidBorder();
         return true;
