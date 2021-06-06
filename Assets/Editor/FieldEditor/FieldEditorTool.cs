@@ -70,7 +70,7 @@ class FieldTool : EditorTool, IDrawSelectedHandles
 
 
                 AxialHexCoords clickedHexCoords = AxialHexCoords.FromXZ(worldClick.x, worldClick.z);
-                hexMap.SetHexTile(clickedHexCoords, selection);
+                hexMap.SetHexTile(clickedHexCoords, 0, selection);
             }
         }
         // Don't allow clicking over empty space to deselect the object

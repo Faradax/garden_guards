@@ -14,5 +14,9 @@ public class DefaultTileFlow: MonoBehaviour, IInteraction
         tile.OnClick();
         return true;
     }
+
+    public void OnMouseWheel(int diff)
+    {
+    }
 }
 }

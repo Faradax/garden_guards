@@ -16,5 +16,9 @@ public class RemoveTileFlow : MonoBehaviour, IInteraction
         AxialHexCoords axialHexCoords = AxialHexCoords.FromXZ(transformPosition.x, transformPosition.z);
         return hexMap.RemoveTile(axialHexCoords);
     }
+    
+    public void OnMouseWheel(int diff)
+    {
+    }
 }
 }

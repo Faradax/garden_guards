@@ -1,6 +1,7 @@
 using System;
 using Hex;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Game
 {
@@ -17,15 +18,14 @@ public class InteractionHandler : MonoBehaviour
 
     public void OnEnable()
     {
-        _interaction = null;
         placeNewTileFlow = GetComponent<PlaceNewTileFlow>();
         removeTileFlow = GetComponent<RemoveTileFlow>();
         defaultTileFlow = GetComponent<DefaultTileFlow>();
+        _interaction = defaultTileFlow;
     }
 
     public void OnTileClicked(Clickable clickable)
     {
-        if (_interaction == null) return;
         bool success = _interaction.OnTileClicked(clickable);
         if (success)
         {
@@ -33,6 +33,18 @@ public class InteractionHandler : MonoBehaviour
             Reset();
         }
     }
+
+    public void OnMouseWheel(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        int diff = (int) ctx.ReadValue<Vector2>().y;
+        
+        // No idea why there are diffs of value 0 in phase "performed"
+        if (diff == 0) return;
+        
+        _interaction.OnMouseWheel(diff);
+    }
+    
     private void Reset()
     {
 

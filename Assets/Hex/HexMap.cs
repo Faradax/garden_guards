@@ -37,22 +37,23 @@ public class HexMap : MonoBehaviour
         _voidTileSo = AssetDatabase.LoadAssetAtPath<TileSO>("Assets/Hex/Tiles/Void/VoidTile.asset");
     }
 
-    public Tile SetHexTile(AxialHexCoords coords, TileSO tileSo)
+    public Tile SetHexTile(AxialHexCoords coords, int angle, TileSO tileSo)
     {
         Tile oldSlot = TileAt(coords);
         
         if (oldSlot != null) return null;
 
-        Tile placedTile = PlaceTile(coords, tileSo);
+        Tile placedTile = PlaceTile(coords, angle, tileSo);
         NotifyNeighbours(coords);
         UpdateVoidBorder();
         return placedTile;
     }
-    private Tile PlaceTile(AxialHexCoords coords, TileSO value)
+    private Tile PlaceTile(AxialHexCoords coords, int angle, TileSO value)
     {
 
         Vector3 axialToWorld = coords.ToWorldVector3();
-        var tile = Instantiate(value.asset, axialToWorld, Quaternion.identity).GetComponent<Tile>();
+        Quaternion rotation = Quaternion.Euler(0, angle, 0);
+        var tile = Instantiate(value.asset, axialToWorld, rotation).GetComponent<Tile>();
         var slot = new Slot(coords, tile);
         slots.Add(slot);
         
@@ -103,7 +104,7 @@ public class HexMap : MonoBehaviour
         Slot old = slots.Find(slot => slot.Tile == tile);
         Destroy(tile.gameObject);
         
-        PlaceTile(old.Coords, tileSo);
+        PlaceTile(old.Coords, 0, tileSo);
         NotifyNeighbours(old.Coords);
         UpdateVoidBorder();
     }

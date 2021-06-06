@@ -50,7 +50,7 @@
                     "type": "PassThrough",
                     "id": "6e57aeaf-44b0-4645-ad99-03015f0513a8",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "NormalizeVector2",
                     "interactions": ""
                 },
                 {

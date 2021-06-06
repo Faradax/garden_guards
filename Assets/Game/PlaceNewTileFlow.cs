@@ -9,6 +9,8 @@ public class PlaceNewTileFlow : MonoBehaviour, IInteraction
 
     private TileSO _tileToPlace;
 
+    private int _angle = 0;
+    
     public void PlaceTile(TileSO tileToPlace)
     {
         _tileToPlace = tileToPlace;
@@ -18,11 +20,16 @@ public class PlaceNewTileFlow : MonoBehaviour, IInteraction
     {
         return PlaceTile(target);
     }
+    public void OnMouseWheel(int diff)
+    {
+        _angle = (_angle + diff * 60) % 360;
+        Debug.Log(_angle);
+    }
     private bool PlaceTile(Clickable target)
     {
         Vector3 transformPosition = target.transform.position;
         AxialHexCoords axialHexCoords = AxialHexCoords.FromXZ(transformPosition.x, transformPosition.z);
-        Tile placedTile = hexMap.SetHexTile(axialHexCoords, _tileToPlace);
+        Tile placedTile = hexMap.SetHexTile(axialHexCoords, _angle, _tileToPlace);
 
         if (!placedTile) return false;
 
