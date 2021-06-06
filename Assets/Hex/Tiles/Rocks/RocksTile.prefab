@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -4793965990001127515}
   - component: {fileID: 3091976769375679347}
   - component: {fileID: 1905105865521564286}
+  - component: {fileID: -170035333841430303}
   m_Layer: 0
   m_Name: RocksTile
   m_TagString: Untagged
@@ -242,6 +243,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dcf3a344d0f4dea92db2da142fa2694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-170035333841430303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257620429393756746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2669731fef20cda269c56d76d197889c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeTo: {fileID: 11400000, guid: f8860c65c13d337a99768ff907b078ff, type: 2}
+  requiredTilesAdjacent:
+  - {fileID: 11400000, guid: 7f18f0332680e1f5fa5ab55c170aa0bc, type: 2}
+  - {fileID: 11400000, guid: 7f18f0332680e1f5fa5ab55c170aa0bc, type: 2}
+  isFulfilled: 0
+  upgradeNeighbours: []
 --- !u!1001 &6014369401419068717
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ public class Tile : MonoBehaviour
     {
         if (!_upgradeCondition) return;
         _upgradeCondition.EvaluateUpgradeCondition(neighbours);
-        border.SetActive(_upgradeCondition.IsFulfilled());
+        //border.SetActive(_upgradeCondition.IsFulfilled());
     }
     public void OnClick()
     {

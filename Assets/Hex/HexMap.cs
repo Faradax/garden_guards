@@ -115,6 +115,7 @@ public class HexMap : MonoBehaviour
     public void ReplaceTile(Tile tile, TileSO tileSo)
     {
         Slot old = slots.Find(slot => slot.Tile == tile);
+        slots.Remove(old);
         Destroy(tile.gameObject);
         
         PlaceTile(old.Coords, 0, tileSo);

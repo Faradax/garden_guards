@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeAnywhere: 0
   asset: {fileID: 2257620429393756746, guid: 29a5581a2a4c604d2b6a2b89e5810de0, type: 3}
+  tags:
+  - {fileID: 11400000, guid: a8d8f1a4406847f93aacdcf304eaaa0e, type: 2}
   upgrades: {fileID: 0}
