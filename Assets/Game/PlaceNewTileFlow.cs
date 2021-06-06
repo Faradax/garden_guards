@@ -25,7 +25,7 @@ public class PlaceNewTileFlow : MonoBehaviour, IInteraction
     
     public void OnTileHovered(Tile tile)
     {
-        previewController.UpdateTarget(tile);        
+        previewController.OnTileHovered(tile);        
     }
     
     public void OnMouseWheel(int diff)

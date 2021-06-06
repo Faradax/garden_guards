@@ -72,7 +72,7 @@ public class MousePointer : MonoBehaviour
         
         var clickable = colliderGameObject.GetComponent<Clickable>();
         
-        return clickable ? clickable : null;
+        return clickable && clickable.enabled ? clickable : null;
 
     }
 }
