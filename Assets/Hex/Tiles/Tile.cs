@@ -30,11 +30,6 @@ public class Tile : MonoBehaviour
         _darkerMaterial.shader = darkShader;
     }
 
-    public bool isEmpty()
-    {
-        return tileSo.asset.name == "VoidTile";
-    }
-
     public void OnNeighboursChanged(List<Tile> neighbours)
     {
         if (!_upgradeCondition) return;

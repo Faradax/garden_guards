@@ -130,8 +130,7 @@ public class HexMap : MonoBehaviour
     public void UpdateVoidBorder()
     {
         IEnumerable<AxialHexCoords> axialHexCoordsEnumerable =
-            slots.Where(slot => !slot.Tile.isEmpty())
-                .Select(it => it.Coords)
+            slots.Select(it => it.Coords)
                 .SelectMany(it => it.Neighbours())
                 .Distinct()
                 .Where(it => slots.All(slot => !Equals(slot.Coords, it)))
