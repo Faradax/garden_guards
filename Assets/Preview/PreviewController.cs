@@ -73,7 +73,7 @@ public class PreviewController : MonoBehaviour
     {
         var pointerPosition = ctx.ReadValue<Vector2>();
         Ray pointerRay = Camera.main.ScreenPointToRay(pointerPosition);
-        var plane = new Plane(Vector3.up, Vector3.up);
+        var plane = new Plane(Vector3.up, 2 * Vector3.up);
         bool madeContact = plane.Raycast(pointerRay, out float distance);
         if (madeContact)
         {
