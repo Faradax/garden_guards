@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -39,5 +40,17 @@ public class Tile : MonoBehaviour
     public void OnClick()
     {
         _upgradeCondition?.DoUpgrade();
+    }
+
+    public void Drop()
+    {
+        StartCoroutine(DoDrop());
+    }
+    private IEnumerator DoDrop()
+    {
+        var rb = gameObject.AddComponent<Rigidbody>();
+        rb.AddForceAtPosition(Vector3.down, rb.position + Vector3.right / 2);
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }

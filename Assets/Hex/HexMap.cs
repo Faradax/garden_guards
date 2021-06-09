@@ -99,10 +99,9 @@ public class HexMap : MonoBehaviour
         {
             tileLifecycleAware.OnTileRemoved();
         }
-        
-        Destroy(oldTile.gameObject);
         NotifyNeighbours(old.Coords);
         UpdateVoidBorder();
+        oldTile.Drop();
         return true;
     }
     
