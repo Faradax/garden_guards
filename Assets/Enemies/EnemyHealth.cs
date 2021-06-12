@@ -26,11 +26,13 @@ public class EnemyHealth : MonoBehaviour
     {
         Current -= amount;
 
-        StartCoroutine(Flash());
-        
         if (Current <= 0)
         {
             Die();
+        }
+        else
+        {
+            StartCoroutine(Flash());
         }
     }
     private void Die()
@@ -58,5 +60,6 @@ public class EnemyHealth : MonoBehaviour
     private void OnDisable()
     {
         enemySo.counter.Decrease();
+        StopAllCoroutines();
     }
 }
