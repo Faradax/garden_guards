@@ -1,3 +1,4 @@
+using System.Collections;
 using Hex.Tiles.Lily;
 using UnityEngine;
 
@@ -5,8 +6,10 @@ public class LilyTile : MonoBehaviour
 {
 
     public AreaDamage areaDamage;
-    public float cooldown;
+    public GameObject beamFx;
+    public float cooldown = 2;
     public float currentCooldown;
+    public float damageInterval = 0.3f;
 
     private void Update()
     {
@@ -21,6 +24,16 @@ public class LilyTile : MonoBehaviour
     
     private void Fire()
     {
-        areaDamage.DoDamage();
+        StartCoroutine(DoFire());
+    }
+    private IEnumerator DoFire()
+    {
+        beamFx.SetActive(true);
+        for (var i = 0; i < 2; i++)
+        {
+            areaDamage.DoDamage();
+            yield return new WaitForSeconds(damageInterval);
+        }
+        beamFx.SetActive(false);
     }
 }
