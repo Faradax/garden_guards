@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
   m_Name: RocksTile
   m_EditorClassIdentifier: 
-  isLandscape: 1
+  placeAnywhere: 0
   asset: {fileID: 2257620429393756746, guid: 9707ad30afcf01472a07b97a8bf1c750, type: 3}
+  price: 1
+  tags: []
   upgrades: {fileID: 0}

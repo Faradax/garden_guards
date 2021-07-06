@@ -9,6 +9,7 @@ public class TileSO : ScriptableObject
     public bool placeAnywhere;
     
     public GameObject asset;
+    public int price;
     public List<Tag> tags;
     public TileUpgrades upgrades;
     public bool canUpgradeTo(TileSO tileSo)

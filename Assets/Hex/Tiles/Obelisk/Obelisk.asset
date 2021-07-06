@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e099ffe6b265cf2bb429062b514acf1, type: 3}
   m_Name: Obelisk
   m_EditorClassIdentifier: 
-  isLandscape: 0
+  placeAnywhere: 0
   asset: {fileID: 2257620429393756746, guid: 10450bd764510d7638789ee643f86a70, type: 3}
+  price: 2
+  tags: []
   upgrades: {fileID: 0}

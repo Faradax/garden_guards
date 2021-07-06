@@ -9,9 +9,19 @@ using Random = System.Random;
 public class Draft: MonoBehaviour
 {
 
+    [Serializable]
+    public class ShopItem
+    {
+        public ShopItem(TileSO tileSo)
+        {
+            TileSO = tileSo;
+        }
+        public TileSO TileSO { get; }
+    }
+    
     public List<TileSO> pool;
     [HideInInspector]
-    public List<TileSO> current;
+    public List<ShopItem> current;
     [HideInInspector]
     public bool selectionMade;
 
@@ -43,7 +53,7 @@ public class Draft: MonoBehaviour
 
         for (var i = 0; i < amount; i++)
         {
-            current.Add(RandomFromPool());
+            current.Add(new ShopItem(RandomFromPool()));
         }
         draftRefresh?.Invoke();
     }
@@ -55,7 +65,7 @@ public class Draft: MonoBehaviour
         return pool[randomIndex];
     }
 
-    public IEnumerable<TileSO> GetItems()
+    public IEnumerable<ShopItem> GetItems()
     {
         return current;
     }
@@ -71,12 +81,12 @@ public class Draft: MonoBehaviour
             UpdateSelection(index);
         }
     }
-    private async void UpdateSelection(int index)
+    private void UpdateSelection(int index)
     {
 
         _index = index;
         selectionMade = true;
-        TileSO selectedTileSO = current[index];
+        TileSO selectedTileSO = current[index].TileSO;
         selectionChanged.Invoke(selectedTileSO);
         if (selectedTileSO.name == "VoidTile")
         {
@@ -95,6 +105,12 @@ public class Draft: MonoBehaviour
         selectionMade = false;
         draftRefresh?.Invoke();
         selectionChanged.Invoke(null);
+    }
+
+    public void Remove(ShopItem item)
+    {
+        current.Remove(item);
+        draftRefresh?.Invoke();
     }
     
     private void ClearSelection()

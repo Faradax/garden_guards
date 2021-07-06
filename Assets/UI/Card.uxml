@@ -1,5 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="card" style="color: rgb(255, 255, 255);">
-        <ui:Label text="Label" display-tooltip-when-elided="true" name="name" style="-unity-font-style: bold; font-size: 24px; color: rgb(255, 255, 255); background-color: rgb(54, 36, 82); border-left-width: 8px; border-right-width: 8px; border-top-width: 8px; border-bottom-width: 8px; border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-left-color: rgb(156, 120, 66); border-right-color: rgb(156, 120, 66); border-top-color: rgb(156, 120, 66); border-bottom-color: rgb(156, 120, 66); width: 266px;" />
+    <ui:VisualElement name="card" style="color: rgb(255, 255, 255); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(200, 123, 123); border-right-color: rgb(200, 123, 123); border-top-color: rgb(200, 123, 123); border-bottom-color: rgb(200, 123, 123); background-color: rgb(126, 135, 0);">
+        <ui:Label text="Label" display-tooltip-when-elided="true" name="name" style="-unity-font-style: bold; font-size: 18px; color: rgb(255, 255, 255); width: 266px; padding-top: 0; padding-bottom: 0; margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; padding-left: 0; padding-right: 0;" />
+        <ui:VisualElement style="flex-direction: row; justify-content: center;">
+            <ui:Button text="Use" display-tooltip-when-elided="true" name="use" style="flex-grow: 1; margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;" />
+            <ui:Button text="Compost" display-tooltip-when-elided="true" name="compost" style="flex-grow: 1; margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

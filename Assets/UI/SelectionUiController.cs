@@ -6,9 +6,12 @@ public class SelectionUiController : MonoBehaviour
 {
     
     public UIDocument document;
+    public VisualTreeAsset card;
     public MousePointer pointer;
 
     public Draft draft;
+
+    public Compost compost;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,31 +24,45 @@ public class SelectionUiController : MonoBehaviour
     }
     private void OnDraftRefresh()
     {
-        IEnumerable<TileSO> towers = draft.GetItems();
+        IEnumerable<Draft.ShopItem> items = draft.GetItems();
 
         VisualElement root = document.rootVisualElement;
         var list = root.Q<VisualElement>("buttonList");
         list.Clear();
         
         var i = 0;
-        foreach (TileSO towerSo in towers)
+        foreach (Draft.ShopItem item in items)
         {
             int index = i;
-            Button button = BuildCard(towerSo, index);
-            list.Add(button);
+            TemplateContainer cardInstance = BuildCard(item, index);
+            list.Add(cardInstance);
             i++;
         }
     }
-    private Button BuildCard(TileSO tileSo, int index)
+    private TemplateContainer BuildCard(Draft.ShopItem item, int index)
     {
-
+        TileSO tileSo = item.TileSO;
         void ChangePlacedItem()
         {
+            if (!compost.HasEnough(tileSo.price))
+            {
+                return;
+            }
+            compost.Subtract(tileSo.price);
             pointer.placeTile = tileSo;
             draft.ChangeSelection(index);
         }
 
-        var button = new Button(ChangePlacedItem) {text = tileSo.name};
-        return button;
+        void CompostItem()
+        {
+            compost.Add(tileSo.price);
+            draft.Remove(item);
+        }
+        
+        TemplateContainer cardInstance = card.CloneTree();
+        cardInstance.Q<Label>("name").text = tileSo.name;
+        cardInstance.Q<Button>("use").clicked += ChangePlacedItem;
+        cardInstance.Q<Button>("compost").clicked += CompostItem;
+        return cardInstance;
     }
 }
