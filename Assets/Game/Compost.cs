@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Compost : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Compost : MonoBehaviour
     private int current;
 
     public int Current => current;
+    public UnityEvent<int> valueChanged;
 
     public bool HasEnough(int amount)
     {
@@ -20,6 +22,7 @@ public class Compost : MonoBehaviour
     public void Add(int amount)
     {
         current += amount;
+        valueChanged.Invoke(current);
     }
 
     public void Subtract(int amount)
@@ -29,5 +32,6 @@ public class Compost : MonoBehaviour
             throw new ArgumentException();
         }
         current -= amount;
+        valueChanged.Invoke(current);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -12,7 +13,12 @@ public class SelectionUiController : MonoBehaviour
     public Draft draft;
 
     public Compost compost;
-    // Start is called before the first frame update
+
+    private void OnEnable()
+    {
+        compost.valueChanged.AddListener(value => document.rootVisualElement.Q<Label>("compost").text = value.ToString());
+    }
+
     void Start()
     {
         draft.draftRefresh += OnDraftRefresh;
@@ -20,7 +26,6 @@ public class SelectionUiController : MonoBehaviour
         VisualElement root = document.rootVisualElement;
         var redrawButton = root.Q<Button>("redraw");
         redrawButton.clickable.clicked += () => draft.OnWaveStart();
-
     }
     private void OnDraftRefresh()
     {
@@ -61,6 +66,7 @@ public class SelectionUiController : MonoBehaviour
         
         TemplateContainer cardInstance = card.CloneTree();
         cardInstance.Q<Label>("name").text = tileSo.name;
+        cardInstance.Q<Label>("cost").text = tileSo.price.ToString();
         cardInstance.Q<Button>("use").clicked += ChangePlacedItem;
         cardInstance.Q<Button>("compost").clicked += CompostItem;
         return cardInstance;

@@ -1,5 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement style="width: 125px; height: 100%; background-color: rgba(0, 0, 0, 0.46);">
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Compost" display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); margin-right: 8px;" />
+            <ui:Label text="0&#10;" display-tooltip-when-elided="true" name="compost" style="flex-shrink: 1; flex-grow: 1; color: rgba(255, 255, 255, 255);" />
+        </ui:VisualElement>
         <ui:VisualElement name="buttonList" />
         <ui:Button text="Button" display-tooltip-when-elided="true" name="redraw" />
     </ui:VisualElement>
