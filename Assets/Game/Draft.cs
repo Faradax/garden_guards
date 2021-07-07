@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Game;
-using Hex;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = System.Random;
 
-public class Draft: MonoBehaviour
+public class Draft : MonoBehaviour
 {
 
     [Serializable]
@@ -18,12 +17,14 @@ public class Draft: MonoBehaviour
         }
         public TileSO TileSO { get; }
     }
-    
+
     public List<TileSO> pool;
+
     [HideInInspector]
     public List<ShopItem> current;
+
     [HideInInspector]
-    public bool selectionMade;
+    public ShopItem selected;
 
     public event Action draftRefresh;
     public UnityEvent<TileSO> selectionChanged;
@@ -32,7 +33,6 @@ public class Draft: MonoBehaviour
     public int draw = 7;
 
     public InteractionHandler interactionHandler;
-    private int _index;
 
     public static Draft instance;
 
@@ -44,7 +44,6 @@ public class Draft: MonoBehaviour
     public void OnWaveStart()
     {
         selectionChanged.Invoke(null);
-        selectionMade = false;
         current.Clear();
         DrawRandom(draw);
     }
@@ -57,7 +56,7 @@ public class Draft: MonoBehaviour
         }
         draftRefresh?.Invoke();
     }
-    
+
     private TileSO RandomFromPool()
     {
         int max = pool.Count;
@@ -70,23 +69,22 @@ public class Draft: MonoBehaviour
         return current;
     }
 
-    public void ChangeSelection(int index)
+    public void ChangeSelection(ShopItem item)
     {
-        if (index == _index)
+        if (selected == item)
         {
             ClearSelection();
         }
         else
         {
-            UpdateSelection(index);
+            UpdateSelection(item);
         }
     }
-    private void UpdateSelection(int index)
+    private void UpdateSelection(ShopItem item)
     {
 
-        _index = index;
-        selectionMade = true;
-        TileSO selectedTileSO = current[index].TileSO;
+        selected = item;
+        TileSO selectedTileSO = item.TileSO;
         selectionChanged.Invoke(selectedTileSO);
         if (selectedTileSO.name == "VoidTile")
         {
@@ -100,9 +98,8 @@ public class Draft: MonoBehaviour
 
     public void OnTilePlaced()
     {
-        current.RemoveAt(_index);
-        _index = -1;
-        selectionMade = false;
+        current.Remove(selected);
+        selected = null;
         draftRefresh?.Invoke();
         selectionChanged.Invoke(null);
     }
@@ -112,12 +109,11 @@ public class Draft: MonoBehaviour
         current.Remove(item);
         draftRefresh?.Invoke();
     }
-    
+
     private void ClearSelection()
     {
 
-        _index = -1;
-        selectionMade = false;
+        selected = null;
         selectionChanged.Invoke(null);
         interactionHandler.Abort();
     }

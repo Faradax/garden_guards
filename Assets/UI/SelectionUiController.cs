@@ -39,12 +39,12 @@ public class SelectionUiController : MonoBehaviour
         foreach (Draft.ShopItem item in items)
         {
             int index = i;
-            TemplateContainer cardInstance = BuildCard(item, index);
+            TemplateContainer cardInstance = BuildCard(item);
             list.Add(cardInstance);
             i++;
         }
     }
-    private TemplateContainer BuildCard(Draft.ShopItem item, int index)
+    private TemplateContainer BuildCard(Draft.ShopItem item)
     {
         TileSO tileSo = item.TileSO;
         void ChangePlacedItem()
@@ -55,12 +55,13 @@ public class SelectionUiController : MonoBehaviour
             }
             compost.Subtract(tileSo.price);
             pointer.placeTile = tileSo;
-            draft.ChangeSelection(index);
+            draft.ChangeSelection(item);
+            
         }
 
         void CompostItem()
         {
-            compost.Add(tileSo.price);
+            compost.Add(1);
             draft.Remove(item);
         }
         
