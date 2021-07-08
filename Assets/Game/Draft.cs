@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Game;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,6 +20,7 @@ public class Draft : MonoBehaviour
     }
 
     public List<TileSO> pool;
+    public List<ShopItem> deck;
 
     [HideInInspector]
     public List<ShopItem> current;
@@ -39,6 +41,11 @@ public class Draft : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        var decksize = 64;
+        for (var i = 0; i < decksize; i++)
+        {
+            deck.Add(new ShopItem(pool[i%pool.Count]));
+        }
     }
 
     public void OnWaveStart()
@@ -52,16 +59,18 @@ public class Draft : MonoBehaviour
 
         for (var i = 0; i < amount; i++)
         {
-            current.Add(new ShopItem(RandomFromPool()));
+            current.Add(RandomFromPool());
         }
         draftRefresh?.Invoke();
     }
 
-    private TileSO RandomFromPool()
+    private ShopItem RandomFromPool()
     {
-        int max = pool.Count;
+        int max = deck.Count;
         int randomIndex = _random.Next(max);
-        return pool[randomIndex];
+        var tile = deck[randomIndex];
+        deck.RemoveAt(randomIndex);
+        return tile;
     }
 
     public IEnumerable<ShopItem> GetItems()
